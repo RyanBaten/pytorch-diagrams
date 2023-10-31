@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Add",
+    "type": "icon",
+    "definition": {
+      "icon": "add_circle",
+      "inputs": [
+        { "name": "in1", "label": "" },
+        { "name": "in2", "label": "" }
+      ],
+      "outputs": [
+        {
+          "name": "out1",
+          "label": ""
+        }
+      ]
+    }
+  },
+  {
+    "name": "Mult",
+    "type": "icon",
+    "definition": {
+      "icon": "adjust",
+      "inputs": [
+        { "name": "in1", "label": "" },
+        { "name": "in2", "label": "" }
+      ],
+      "outputs": [
+        {
+          "name": "out1",
+          "label": ""
+        }
+      ]
+    }
+  },
+  {
+    "name": "Linear",
+    "definition": {
+      "inputs": [{ "name": "in1", "label": "input" }],
+      "outputs": [{ "name": "out1", "label": "output" }]
+    }
+  }
+]

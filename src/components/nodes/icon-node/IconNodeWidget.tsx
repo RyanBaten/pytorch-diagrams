@@ -1,6 +1,7 @@
 import * as React from "react";
 import { DiagramEngine, PortWidget } from "@projectstorm/react-diagrams";
 import { IconNodeModel, RightAnglePortModel } from "./IconNodeModel";
+import "./IconNodeModel.css";
 
 export interface IconNodeWidgetProps {
   node: IconNodeModel;
@@ -22,27 +23,33 @@ export class IconNodeWidget extends React.Component<
     const input_ports = this.props.node
       .getInPorts()
       .map((port: RightAnglePortModel) => (
-        <PortWidget key={port.getName()} engine={this.props.engine} port={port}>
-          <div className="circle-port" />
-        </PortWidget>
+        <PortWidget
+          className="icon-node-port"
+          key={port.getName()}
+          engine={this.props.engine}
+          port={port}
+        />
       ));
     const output_ports = this.props.node
       .getOutPorts()
       .map((port: RightAnglePortModel) => (
-        <PortWidget key={port.getName()} engine={this.props.engine} port={port}>
-          <div className="circle-port" />
-        </PortWidget>
+        <PortWidget
+          className="icon-node-port"
+          key={port.getName()}
+          engine={this.props.engine}
+          port={port}
+        />
       ));
     return (
       <div className="icon-node">
-        {input_ports}
+        <div className="icon-inputs">{input_ports}</div>
         <div
           className="material-symbols-outlined"
           style={this.props.node.getStyle()}
         >
           {this.props.node.getIcon()}
         </div>
-        {output_ports}
+        <div className="icon-outputs">{output_ports}</div>
       </div>
     );
   }

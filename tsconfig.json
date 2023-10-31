@@ -4,7 +4,12 @@
     "declaration": false,
     "jsx": "react-jsx",
     "target": "es6",
-    "module": "CommonJS"
+    "module": "CommonJS",
+    "paths": {
+      "@config/*": ["./src/config/*"],
+      "@components/*": ["./src/components/*"]
+    },
+    "resolveJsonModule": true
   },
   "include": ["./src"]
 }

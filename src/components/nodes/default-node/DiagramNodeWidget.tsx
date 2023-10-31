@@ -35,8 +35,8 @@ export class DiagramNodeWidget extends React.Component<
       ));
     return (
       <div className="custom-node">
-        {input_ports}
-        {output_ports}
+        <div className="diagram-node-inputs">{input_ports}</div>
+        <div className="diagram-node-outputs">{output_ports}</div>
       </div>
     );
   }

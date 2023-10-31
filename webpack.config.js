@@ -13,6 +13,10 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
+    alias: {
+      "@config": path.resolve(__dirname, "src/config/"),
+      "@components": path.resolve(__dirname, "src/components/"),
+    },
   },
   optimization: {
     minimizer: [
@@ -42,9 +46,6 @@ module.exports = {
           "style-loader",
           {
             loader: "css-loader",
-            // options: {
-            //   modules: true,
-            // },
           },
         ],
       },

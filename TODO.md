@@ -2,11 +2,19 @@
 
 - Figure out how to represent different modules
   - Custom modules?
+- Page is too tall to fit in one screen, downsize
+- Export graph
+
+# Diagram
+
+- Delegate zoom out to NavBar
+  - Current diagram can zoom out when hovering over a node
 
 # NavBar
 
 - General tools
-  - Zoom to fit
+  - Zoom in/Zoom out
+  - Zoom to fit?
   - Enable/Disable panning (canvas drag)
   - Export Button
 
@@ -23,6 +31,7 @@
 - Add ports/sections to nodes via button on node
 - Common operations as custom nodes
 - Input/output nodes
+- Background color in Node Definitions
 
 # Links
 

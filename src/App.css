@@ -38,7 +38,7 @@
   position: relative;
 }
 
-.icon-node {
+/* .icon-node {
   border: solid 2px gray;
   background-color: snow;
   border-radius: 5px;
@@ -48,7 +48,7 @@
   align-items: flex-start;
   justify-content: space-between;
   position: relative;
-}
+} */
 
 .custom-node-color {
   position: absolute;
