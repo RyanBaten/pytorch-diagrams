@@ -1,12 +1,17 @@
 import { createRoot } from "react-dom/client";
+import createEngine, { DiagramModel } from "@projectstorm/react-diagrams";
 import "./App.css";
 
-import Diagram from "./components/diagram/Diagram";
+import DiagramContainer from "./components/diagram/DiagramContainer";
 import NavBar from "./components/navbar/NavBar";
 import SideBar from "./components/sidebar/SideBar";
 import SideBarWidget from "./components/sidebar/SidebarWidget";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const diagramEngine = createEngine();
+  const diagramModel = new DiagramModel();
+  diagramEngine.setModel(diagramModel);
+
   const root = createRoot(document.querySelector("#application"));
   root.render(
     <>
@@ -17,14 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
         <SideBar>
           <h1>Sidebar</h1>
           <SideBarWidget name="test1">
-            <div>Test1</div>
+            <div>GREEN</div>
           </SideBarWidget>
           <SideBarWidget name="test2">
-            <div>Test2</div>
+            <div>BLUE</div>
           </SideBarWidget>
         </SideBar>
         <div className="resize-bar" />
-        <Diagram />
+        <DiagramContainer engine={diagramEngine} model={diagramModel} />
       </div>
     </>
   );
