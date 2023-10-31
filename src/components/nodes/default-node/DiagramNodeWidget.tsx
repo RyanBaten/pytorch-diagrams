@@ -35,6 +35,7 @@ export class DiagramNodeWidget extends React.Component<
       ));
     return (
       <div className="custom-node">
+        {/* <div className="diagram-node-title">{this.props.node.getName()}</div> */}
         <div className="diagram-node-inputs">{input_ports}</div>
         <div className="diagram-node-outputs">{output_ports}</div>
       </div>
