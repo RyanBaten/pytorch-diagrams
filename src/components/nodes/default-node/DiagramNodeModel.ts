@@ -18,18 +18,27 @@ interface DiagramNodePort {
 }
 
 interface DiagramNodeOptions {
+  name: string;
+  style?: Object;
+  portStyle?: Object;
   properties?: Object[];
   inputs?: DiagramNodePort[];
   outputs?: DiagramNodePort[];
 }
 
 export class DiagramNodeModel extends DefaultNodeModel {
-  constructor(options: DiagramNodeOptions = {}) {
+  protected name: string;
+  protected style: Object;
+  protected portStyle: Object;
+
+  constructor(options: DiagramNodeOptions = { name: "" }) {
     super({
       ...options,
       type: "diagram-custom-node",
     });
-
+    this.name = options.name;
+    this.style = options.style;
+    this.portStyle = options.portStyle;
     if (options.inputs) {
       for (var inp of options.inputs) {
         this.addPort(
@@ -52,5 +61,17 @@ export class DiagramNodeModel extends DefaultNodeModel {
         );
       }
     }
+  }
+
+  getName(): string {
+    return this.name;
+  }
+
+  getStyle(): Object {
+    return this.style;
+  }
+
+  getPortStyle(): Object {
+    return this.portStyle;
   }
 }

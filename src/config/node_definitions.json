@@ -4,6 +4,9 @@
     "type": "icon",
     "definition": {
       "icon": "add_circle",
+      "style": {
+        "backgroundColor": "#dba2a2"
+      },
       "inputs": [
         { "name": "in1", "label": "" },
         { "name": "in2", "label": "" }
@@ -21,6 +24,9 @@
     "type": "icon",
     "definition": {
       "icon": "adjust",
+      "style": {
+        "backgroundColor": "#dba2a2"
+      },
       "inputs": [
         { "name": "in1", "label": "" },
         { "name": "in2", "label": "" }
@@ -35,9 +41,18 @@
   },
   {
     "name": "Linear",
+    "type": "diagram",
     "definition": {
-      "inputs": [{ "name": "in1", "label": "input" }],
-      "outputs": [{ "name": "out1", "label": "output" }]
+      "inputs": [{ "name": "in", "label": "in" }],
+      "outputs": [{ "name": "out", "label": "out" }]
+    }
+  },
+  {
+    "name": "ReLU",
+    "type": "diagram",
+    "definition": {
+      "inputs": [{ "name": "in", "label": "in" }],
+      "outputs": [{ "name": "out", "label": "out" }]
     }
   }
 ]

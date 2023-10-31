@@ -28,6 +28,7 @@ export class IconNodeWidget extends React.Component<
           key={port.getName()}
           engine={this.props.engine}
           port={port}
+          style={this.props.node.getPortStyle()}
         />
       ));
     const output_ports = this.props.node
@@ -38,14 +39,15 @@ export class IconNodeWidget extends React.Component<
           key={port.getName()}
           engine={this.props.engine}
           port={port}
+          style={this.props.node.getPortStyle()}
         />
       ));
     return (
-      <div className="icon-node">
+      <div className="icon-node" style={this.props.node.getStyle()}>
         <div className="icon-inputs">{input_ports}</div>
         <div
           className="material-symbols-outlined"
-          style={this.props.node.getStyle()}
+          style={this.props.node.getIconStyle()}
         >
           {this.props.node.getIcon()}
         </div>

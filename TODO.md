@@ -31,9 +31,12 @@
 - Add ports/sections to nodes via button on node
 - Common operations as custom nodes
 - Input/output nodes
+- Allow only one connection between each input and output
 - Background color in Node Definitions
 
 # Links
 
 - Link arrows
+- Links shouldn't be created that connect to nothing
 - Don't allow random points, make deletion easier
+- Link routing to avoid visual bugs where the link doesn't properly touch the port

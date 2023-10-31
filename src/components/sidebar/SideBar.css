@@ -1,6 +1,6 @@
 .SideBarDiv {
-  width: 15vw;
-  height: 100vw;
+  width: 15%;
+  height: 100%;
   resize: horizontal;
   overflow: auto;
   background-color: rgb(145, 145, 145);

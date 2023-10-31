@@ -1,24 +1,36 @@
-.icon-node {
+.diagram-node {
   border: solid 2px rgb(51, 51, 51);
   background-color: rgb(146, 146, 146);
   border-radius: 5px;
   display: flex;
+  flex-direction: column;
   position: relative;
 }
 
-.icon-inputs {
+.diagram-node-body {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.diagram-inputs {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-.icon-outputs {
+.diagram-outputs {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-.icon-node-port {
+.diagram-labeled-port {
+  display: flex;
+  flex-direction: row;
+}
+
+.diagram-node-port {
   width: 12px;
   height: 12px;
   margin: 2px;
@@ -27,6 +39,6 @@
   cursor: pointer;
 }
 
-.icon-node-port:hover {
+.diagram-node-port:hover {
   background-color: var(--hover-color, rgb(0, 0, 0));
 }

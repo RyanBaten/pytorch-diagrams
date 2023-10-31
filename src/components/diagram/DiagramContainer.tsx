@@ -27,7 +27,7 @@ export default function DiagramContainer(props: DiagramContainerProps) {
     if (!nodeConfig) return;
     const nodeType =
       nodeConfig.type == "icon" ? IconNodeModel : DiagramNodeModel;
-    return new nodeType(nodeConfig.definition);
+    return new nodeType({ ...nodeConfig.definition, name: name });
   };
 
   return (
