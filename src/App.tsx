@@ -27,6 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
           <SideBarWidget name="test2">
             <div>BLUE</div>
           </SideBarWidget>
+          <SideBarWidget name="test3">
+            <div>ICON</div>
+          </SideBarWidget>
+          <SideBarWidget name="test4">
+            <div>CUSTOM</div>
+          </SideBarWidget>
         </SideBar>
         <div className="resize-bar" />
         <DiagramContainer engine={diagramEngine} model={diagramModel} />

@@ -12,23 +12,42 @@ export class RightAnglePortModel extends DefaultPortModel {
   }
 }
 
-interface DiagramNodePort {
+interface IconNodePort {
   name: string;
   label: string;
 }
 
-interface DiagramNodeOptions {
+interface IconNodeOptions {
+  style?: Object;
+  icon: string;
   properties?: Object[];
-  inputs?: DiagramNodePort[];
-  outputs?: DiagramNodePort[];
+  inputs?: IconNodePort[];
+  outputs?: IconNodePort[];
 }
 
-export class DiagramNodeModel extends DefaultNodeModel {
-  constructor(options: DiagramNodeOptions = {}) {
+export class IconNodeModel extends DefaultNodeModel {
+  protected style: Object;
+  protected icon: string;
+
+  constructor(
+    options: IconNodeOptions = {
+      style: {},
+      icon: "cloud",
+    }
+  ) {
     super({
       ...options,
-      type: "diagram-custom-node",
+      type: "icon-custom-node",
     });
+    this.style = Object.assign(
+      {
+        fontSize: "48px",
+        color: "black",
+        textShadow: "1px 1px 3px #555555",
+      },
+      options.style
+    );
+    this.icon = options.icon;
 
     if (options.inputs) {
       for (var inp of options.inputs) {
@@ -52,5 +71,13 @@ export class DiagramNodeModel extends DefaultNodeModel {
         );
       }
     }
+  }
+
+  getStyle(): Object {
+    return this.style;
+  }
+
+  getIcon(): string {
+    return this.icon;
   }
 }

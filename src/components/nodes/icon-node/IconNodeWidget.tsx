@@ -1,19 +1,19 @@
 import * as React from "react";
 import { DiagramEngine, PortWidget } from "@projectstorm/react-diagrams";
-import { DiagramNodeModel, RightAnglePortModel } from "./DiagramNodeModel";
+import { IconNodeModel, RightAnglePortModel } from "./IconNodeModel";
 
-export interface DiagramNodeWidgetProps {
-  node: DiagramNodeModel;
+export interface IconNodeWidgetProps {
+  node: IconNodeModel;
   engine: DiagramEngine;
 }
 
-export interface DiagramNodeWidgetState {}
+export interface IconNodeWidgetState {}
 
-export class DiagramNodeWidget extends React.Component<
-  DiagramNodeWidgetProps,
-  DiagramNodeWidgetState
+export class IconNodeWidget extends React.Component<
+  IconNodeWidgetProps,
+  IconNodeWidgetState
 > {
-  constructor(props: DiagramNodeWidgetProps) {
+  constructor(props: IconNodeWidgetProps) {
     super(props);
     this.state = {};
   }
@@ -34,8 +34,14 @@ export class DiagramNodeWidget extends React.Component<
         </PortWidget>
       ));
     return (
-      <div className="custom-node">
+      <div className="icon-node">
         {input_ports}
+        <div
+          className="material-symbols-outlined"
+          style={this.props.node.getStyle()}
+        >
+          {this.props.node.getIcon()}
+        </div>
         {output_ports}
       </div>
     );

@@ -5,7 +5,6 @@
 
 # NavBar
 
-- Initial Navbar
 - General tools
   - Zoom to fit
   - Enable/Disable panning (canvas drag)
@@ -13,9 +12,9 @@
 
 # SideBar
 
-- Initial Sidebar
+- Cleaner sidebar, accordions for button types
+- Read node definitions from config file
 - Drag/Drop new node types
--
 
 # Nodes
 
@@ -28,5 +27,4 @@
 # Links
 
 - Link arrows
-- Square edges
 - Don't allow random points, make deletion easier

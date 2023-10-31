@@ -38,6 +38,18 @@
   position: relative;
 }
 
+.icon-node {
+  border: solid 2px gray;
+  background-color: snow;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+
 .custom-node-color {
   position: absolute;
   top: 50%;

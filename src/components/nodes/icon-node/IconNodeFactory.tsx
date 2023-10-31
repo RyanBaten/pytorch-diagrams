@@ -1,23 +1,23 @@
-import { DiagramNodeModel } from "./DiagramNodeModel";
-import { DiagramNodeWidget } from "./DiagramNodeWidget";
+import { IconNodeModel } from "./IconNodeModel";
+import { IconNodeWidget } from "./IconNodeWidget";
 import { AbstractReactFactory } from "@projectstorm/react-diagrams";
 import { DiagramEngine } from "@projectstorm/react-diagrams";
 
-export class DiagramNodeFactory extends AbstractReactFactory<
-  DiagramNodeModel,
+export class IconNodeFactory extends AbstractReactFactory<
+  IconNodeModel,
   DiagramEngine
 > {
   constructor() {
-    super("diagram-custom-node");
+    super("icon-custom-node");
   }
 
   generateModel(initialConfig) {
-    return new DiagramNodeModel();
+    return new IconNodeModel();
   }
 
   generateReactWidget(event): JSX.Element {
     return (
-      <DiagramNodeWidget
+      <IconNodeWidget
         engine={this.engine as DiagramEngine}
         node={event.model}
       />
