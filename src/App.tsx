@@ -1,11 +1,14 @@
+import { createRoot } from "react-dom/client";
+import "./App.css";
+
 import Diagram from "./components/diagram/Diagram";
 import NavBar from "./components/navbar/NavBar";
 import SideBar from "./components/sidebar/SideBar";
-import "./App.css";
 import SideBarWidget from "./components/sidebar/SidebarWidget";
 
-export default function App() {
-  return (
+document.addEventListener("DOMContentLoaded", () => {
+  const root = createRoot(document.querySelector("#application"));
+  root.render(
     <>
       <NavBar>
         <h1>Navbar</h1>
@@ -25,4 +28,4 @@ export default function App() {
       </div>
     </>
   );
-}
+});
