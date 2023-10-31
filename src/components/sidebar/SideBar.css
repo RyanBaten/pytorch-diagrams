@@ -1,0 +1,12 @@
+.SideBarDiv {
+  width: 15vw;
+  height: 100vw;
+  resize: horizontal;
+  overflow: auto;
+  background-color: rgb(145, 145, 145);
+}
+
+.SideBarWidget {
+  width: 64px;
+  height: 64px;
+}

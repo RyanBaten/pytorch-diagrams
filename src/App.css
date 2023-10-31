@@ -1,0 +1,57 @@
+.app-window {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vw;
+}
+
+.resize-bar {
+  opacity: 50;
+  width: 10px;
+  cursor: col-resize;
+  background-color: rgb(71, 71, 71);
+}
+
+.resize-bar:hover {
+  opacity: 100;
+  background-color: black;
+}
+
+#application {
+  height: 100%;
+  overflow: hidden;
+}
+
+.custom-node {
+  border: solid 2px gray;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+
+.custom-node-color {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+.circle-port {
+  width: 12px;
+  height: 12px;
+  margin: 2px;
+  border-radius: 4px;
+  background: darkgray;
+  cursor: pointer;
+}
+
+.circle-port:hover {
+  background: mediumpurple;
+}

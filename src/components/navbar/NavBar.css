@@ -1,0 +1,6 @@
+.NavBarDiv {
+  width: 100vw;
+  height: 40px;
+  border-bottom: solid 3px black;
+  background-color: rgb(145, 145, 145);
+}

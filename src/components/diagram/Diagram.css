@@ -1,0 +1,12 @@
+.diagram-container {
+  background: #333333;
+  width: 100%;
+  height: 100%;
+  border: solid 3px red;
+}
+
+.canvas-widget {
+  background: #333333;
+  width: 100%;
+  height: 100%;
+}

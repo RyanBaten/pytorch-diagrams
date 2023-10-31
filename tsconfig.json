@@ -1,0 +1,10 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "declaration": false,
+    "jsx": "react-jsx",
+    "target": "es6",
+    "module": "CommonJS"
+  },
+  "include": ["./src"]
+}
