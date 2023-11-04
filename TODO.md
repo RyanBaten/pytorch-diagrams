@@ -26,6 +26,7 @@
 
 # Nodes
 
+- Don't allow nodes to stack ontop of eachother
 - Underlying graph representation
 - Value nodes
 - Add ports/sections to nodes via button on node

@@ -1,7 +1,6 @@
 .icon-node {
-  border: solid 2px rgb(51, 51, 51);
-  background-color: rgb(146, 146, 146);
-  border-radius: 5px;
+  background-color: var(--theme-node-background-color);
+  border-radius: var(--theme-node-border-radius);
   display: flex;
   position: relative;
 }

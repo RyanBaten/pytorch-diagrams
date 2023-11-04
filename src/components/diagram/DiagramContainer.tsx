@@ -5,8 +5,8 @@ import {
 } from "@projectstorm/react-diagrams";
 import { CanvasWidget } from "@projectstorm/react-diagrams";
 import "./Diagram.css";
-import { DiagramNodeModel } from "@components/nodes/default-node/DiagramNodeModel";
-import { DiagramNodeFactory } from "@components/nodes/default-node/DiagramNodeFactory";
+import { DiagramNodeModel } from "@components/nodes/diagram-node/DiagramNodeModel";
+import { DiagramNodeFactory } from "@components/nodes/diagram-node/DiagramNodeFactory";
 import { IconNodeModel } from "@components/nodes/icon-node/IconNodeModel";
 import { IconNodeFactory } from "@components/nodes/icon-node/IconNodeFactory";
 
@@ -35,9 +35,11 @@ export default function DiagramContainer(props: DiagramContainerProps) {
       className="diagram-container"
       onDrop={(event) => {
         const node = createNode(event.dataTransfer.getData("selected-widget"));
-        node.setPosition(props.engine.getRelativeMousePoint(event));
-        props.model.addNode(node);
-        props.engine.repaintCanvas();
+        if (node) {
+          node.setPosition(props.engine.getRelativeMousePoint(event));
+          props.model.addNode(node);
+          props.engine.repaintCanvas();
+        }
       }}
       onDragOver={(event) => {
         event.preventDefault();

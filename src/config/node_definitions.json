@@ -54,5 +54,47 @@
       "inputs": [{ "name": "in", "label": "in" }],
       "outputs": [{ "name": "out", "label": "out" }]
     }
+  },
+  {
+    "name": "Test",
+    "type": "diagram",
+    "definition": {
+      "inputs": [
+        { "name": "in", "label": "in" },
+        { "name": "in2", "label": "in2" }
+      ],
+      "outputs": [
+        { "name": "out", "label": "out" },
+        { "name": "out2", "label": "out2" },
+        { "name": "out3", "label": "out3" }
+      ]
+    }
+  },
+  {
+    "name": "Test2",
+    "type": "icon",
+    "definition": {
+      "icon": "add_circle",
+      "style": {
+        "backgroundColor": "green"
+      },
+      "portStyle": {
+        "--port-color": "white",
+        "--hover-color": "red"
+      },
+      "iconStyle": {
+        "color": "black"
+      },
+      "inputs": [
+        { "name": "in1", "label": "" },
+        { "name": "in2", "label": "" }
+      ],
+      "outputs": [
+        {
+          "name": "out1",
+          "label": ""
+        }
+      ]
+    }
   }
 ]

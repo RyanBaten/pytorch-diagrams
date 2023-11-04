@@ -1,7 +1,6 @@
 .diagram-node {
-  border: solid 2px rgb(51, 51, 51);
-  background-color: rgb(146, 146, 146);
-  border-radius: 5px;
+  background-color: var(--theme-node-background-color);
+  border-radius: var(--theme-node-border-radius);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -13,21 +12,33 @@
   gap: 10px;
 }
 
-.diagram-inputs {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.diagram-node-title {
+  text-align: center;
+  width: 100%;
+  background-color: var(--theme-node-title-color);
+  border-radius: var(--theme-node-title-radius);
 }
 
-.diagram-outputs {
+.diagram-node-inputs {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: flex-start;
+  margin: 4px 4px 4px 4px;
+}
+
+.diagram-node-outputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin: 4px 4px 4px 4px;
 }
 
 .diagram-labeled-port {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .diagram-node-port {
