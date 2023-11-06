@@ -35,6 +35,18 @@
   margin: 4px 4px 4px 4px;
 }
 
+.diagram-node-properties {
+  display: flex;
+  flex-direction: column;
+}
+
+.diagram-node-property {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 4px 4px 4px 4px;
+}
+
 .diagram-labeled-port {
   display: flex;
   flex-direction: row;
@@ -52,4 +64,8 @@
 
 .diagram-node-port:hover {
   background-color: var(--hover-color, rgb(0, 0, 0));
+}
+
+input[type="text"] {
+  width: 48px;
 }

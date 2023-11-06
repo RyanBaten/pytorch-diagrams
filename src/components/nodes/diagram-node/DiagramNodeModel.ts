@@ -5,6 +5,7 @@ import {
   DefaultNodeModel,
 } from "@projectstorm/react-diagrams";
 import { AbstractModelFactory } from "@projectstorm/react-canvas-core";
+import { ObjectLiteralElement } from "typescript";
 
 export class RightAnglePortModel extends DefaultPortModel {
   createLinkModel(factory?: AbstractModelFactory<LinkModel>) {
@@ -17,11 +18,20 @@ interface DiagramNodePort {
   label: string;
 }
 
+export interface DiagramNodeProperty {
+  name: string;
+  label: string;
+  type: string;
+  inputProps?: Object;
+  inputStyle?: Object;
+  value?: any;
+}
+
 interface DiagramNodeOptions {
   name: string;
   style?: Object;
   portStyle?: Object;
-  properties?: Object[];
+  properties?: DiagramNodeProperty[];
   inputs?: DiagramNodePort[];
   outputs?: DiagramNodePort[];
 }
@@ -30,6 +40,7 @@ export class DiagramNodeModel extends DefaultNodeModel {
   protected name: string;
   protected style: Object;
   protected portStyle: Object;
+  protected properties: DiagramNodeProperty[];
 
   constructor(options: DiagramNodeOptions = { name: "" }) {
     super({
@@ -39,6 +50,7 @@ export class DiagramNodeModel extends DefaultNodeModel {
     this.name = options.name;
     this.style = options.style;
     this.portStyle = options.portStyle;
+    this.properties = options.properties;
     if (options.inputs) {
       for (var inp of options.inputs) {
         this.addPort(
@@ -73,5 +85,23 @@ export class DiagramNodeModel extends DefaultNodeModel {
 
   getPortStyle(): Object {
     return this.portStyle;
+  }
+
+  getProperties(): DiagramNodeProperty[] | undefined {
+    return this.properties;
+  }
+
+  setProperty(propName: string, event: any) {
+    for (var prop of this.properties) {
+      if (prop.name == propName) {
+        if (prop.type == "checkbox") {
+          prop.value = event.target.checked;
+        } else {
+          prop.value = event.target.value;
+        }
+        break;
+      }
+    }
+    // console.log(this.properties);
   }
 }
