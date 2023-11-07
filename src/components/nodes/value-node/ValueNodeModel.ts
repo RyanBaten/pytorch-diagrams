@@ -5,6 +5,7 @@ import {
   DefaultNodeModel,
 } from "@projectstorm/react-diagrams";
 import { AbstractModelFactory } from "@projectstorm/react-canvas-core";
+import { ObjectLiteralElement } from "typescript";
 
 export class RightAnglePortModel extends DefaultPortModel {
   createLinkModel(factory?: AbstractModelFactory<LinkModel>) {
@@ -12,44 +13,32 @@ export class RightAnglePortModel extends DefaultPortModel {
   }
 }
 
-interface DiagramNodePort {
+interface ValueNodePort {
   name: string;
   label: string;
 }
 
-export interface DiagramNodeProperty {
-  name: string;
-  label: string;
-  type: string;
-  inputProps?: Object;
-  inputStyle?: Object;
-  value?: any;
-}
-
-interface DiagramNodeOptions {
+interface ValueNodeOptions {
   name: string;
   style?: Object;
   portStyle?: Object;
-  properties?: DiagramNodeProperty[];
-  inputs?: DiagramNodePort[];
-  outputs?: DiagramNodePort[];
+  inputs?: ValueNodePort[];
+  outputs?: ValueNodePort[];
 }
 
-export class DiagramNodeModel extends DefaultNodeModel {
+export class ValueNodeModel extends DefaultNodeModel {
   protected name: string;
   protected style: Object;
   protected portStyle: Object;
-  protected properties: DiagramNodeProperty[];
 
-  constructor(options: DiagramNodeOptions = { name: "" }) {
+  constructor(options: ValueNodeOptions = { name: "Value" }) {
     super({
       ...options,
-      type: "diagram-custom-node",
+      type: "value-custom-node",
     });
     this.name = options.name;
     this.style = options.style;
     this.portStyle = options.portStyle;
-    this.properties = options.properties;
     if (options.inputs) {
       for (var inp of options.inputs) {
         this.addPort(
@@ -78,29 +67,15 @@ export class DiagramNodeModel extends DefaultNodeModel {
     return this.name;
   }
 
+  setName(name: string) {
+    this.name = name;
+  }
+
   getStyle(): Object {
     return this.style;
   }
 
   getPortStyle(): Object {
     return this.portStyle;
-  }
-
-  getProperties(): DiagramNodeProperty[] | undefined {
-    return this.properties;
-  }
-
-  setProperty(propName: string, event: any) {
-    for (var prop of this.properties) {
-      if (prop.name == propName) {
-        if (prop.type == "checkbox") {
-          prop.value = event.target.checked;
-        } else {
-          prop.value = event.target.value;
-        }
-        break;
-      }
-    }
-    // console.log(this.properties);
   }
 }

@@ -9,6 +9,8 @@ import { DiagramNodeModel } from "@components/nodes/diagram-node/DiagramNodeMode
 import { DiagramNodeFactory } from "@components/nodes/diagram-node/DiagramNodeFactory";
 import { IconNodeModel } from "@components/nodes/icon-node/IconNodeModel";
 import { IconNodeFactory } from "@components/nodes/icon-node/IconNodeFactory";
+import { ValueNodeModel } from "@components/nodes/value-node/ValueNodeModel";
+import { ValueNodeFactory } from "@components/nodes/value-node/ValueNodeFactory";
 
 import * as nodeDefinitions from "@config/node_definitions.json";
 
@@ -20,13 +22,18 @@ interface DiagramContainerProps {
 export default function DiagramContainer(props: DiagramContainerProps) {
   props.engine.getNodeFactories().registerFactory(new DiagramNodeFactory());
   props.engine.getNodeFactories().registerFactory(new IconNodeFactory());
+  props.engine.getNodeFactories().registerFactory(new ValueNodeFactory());
   props.engine.getLinkFactories().registerFactory(new RightAngleLinkFactory());
 
   const createNode = (name) => {
     const nodeConfig = nodeDefinitions.find((node) => node.name == name);
     if (!nodeConfig) return;
-    const nodeType =
-      nodeConfig.type == "icon" ? IconNodeModel : DiagramNodeModel;
+    const typeMap = {
+      icon: IconNodeModel,
+      diagram: DiagramNodeModel,
+      value: ValueNodeModel,
+    };
+    const nodeType = typeMap[nodeConfig.type];
     return new nodeType({ ...nodeConfig.definition, name: name });
   };
 

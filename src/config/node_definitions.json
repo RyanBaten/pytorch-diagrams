@@ -22,6 +22,18 @@
     }
   },
   {
+    "name": "Value",
+    "type": "value",
+    "definition": {
+      "style": {
+        "--theme-node-background-color": "#a0eb9d",
+        "--theme-node-title-color": "#65c761"
+      },
+      "inputs": [{ "name": "in", "label": "" }],
+      "outputs": [{ "name": "out", "label": "" }]
+    }
+  },
+  {
     "name": "Add",
     "type": "icon",
     "definition": {
@@ -72,6 +84,12 @@
       "inputs": [{ "name": "in", "label": "in" }],
       "outputs": [{ "name": "out", "label": "out" }],
       "properties": [
+        {
+          "name": "in_dim",
+          "label": "in_dim",
+          "type": "string",
+          "inputStyle": { "width": "48px" }
+        },
         {
           "name": "out_dim",
           "label": "out_dim",
