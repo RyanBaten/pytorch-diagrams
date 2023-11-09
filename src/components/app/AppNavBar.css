@@ -1,0 +1,12 @@
+.logo {
+  height: 100%;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+.app-navbar-menus {
+  color: white;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 20px;
+}

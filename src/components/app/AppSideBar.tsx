@@ -1,5 +1,5 @@
-import SideBar from "./SideBar";
-import SideBarWidget from "./SidebarWidget";
+import SideBar from "../sidebar/SideBar";
+import SideBarWidget from "../sidebar/SidebarWidget";
 
 import * as nodeDefinitions from "@config/node_definitions.json";
 

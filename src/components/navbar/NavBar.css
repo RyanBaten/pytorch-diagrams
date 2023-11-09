@@ -1,6 +1,8 @@
-.NavBarDiv {
+.navbar-div {
+  display: flex;
+  flex-direction: row;
   width: 100vw;
-  height: 40px;
-  border-bottom: solid 3px black;
-  background-color: rgb(145, 145, 145);
+  height: 48px;
+  border-bottom: 2px var(--theme-ui-highlight-color) solid;
+  background-color: var(--theme-ui-background-color);
 }
