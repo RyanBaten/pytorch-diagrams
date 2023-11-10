@@ -65,6 +65,7 @@ export class DiagramNodeWidget extends React.Component<
             }
             onFocus={() => this.props.node.setLocked(true)}
             onBlur={() => this.props.node.setLocked(false)}
+            defaultValue={this.props.node.getProperty(property.name)}
           />
         </div>
       ));

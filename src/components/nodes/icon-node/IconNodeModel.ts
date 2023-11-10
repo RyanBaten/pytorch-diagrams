@@ -3,6 +3,7 @@ import {
   LinkModel,
   RightAngleLinkModel,
   DefaultNodeModel,
+  DeserializeEvent,
 } from "@projectstorm/react-diagrams";
 import { AbstractModelFactory } from "@projectstorm/react-canvas-core";
 
@@ -100,5 +101,25 @@ export class IconNodeModel extends DefaultNodeModel {
 
   getIcon(): string {
     return this.icon;
+  }
+
+  serialize(): any {
+    return {
+      ...super.serialize(),
+      name: this.name,
+      style: this.style,
+      portStyle: this.portStyle,
+      iconStyle: this.iconStyle,
+      icon: this.icon,
+    };
+  }
+
+  deserialize(event: DeserializeEvent<this>) {
+    super.deserialize(event);
+    this.name = event.data.name;
+    this.style = event.data.style;
+    this.portStyle = event.data.portStyle;
+    this.iconStyle = event.data.iconStyle;
+    this.icon = event.data.icon;
   }
 }
