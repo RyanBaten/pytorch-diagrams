@@ -3,8 +3,8 @@ import createEngine, { DiagramModel } from "@projectstorm/react-diagrams";
 import "./App.css";
 
 import DiagramContainer from "./components/diagram/DiagramContainer";
-import NavBar from "./components/navbar/NavBar";
-import AppSideBar from "@components/sidebar/AppSideBar";
+import AppNavBar from "@components/app/AppNavBar";
+import AppSideBar from "@components/app/AppSideBar";
 
 document.addEventListener("DOMContentLoaded", () => {
   const diagramEngine = createEngine();
@@ -14,13 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = createRoot(document.querySelector("#application"));
   root.render(
     <div className="window">
-      <NavBar>
-        <h1>Navbar</h1>
-      </NavBar>
+      <AppNavBar engine={diagramEngine} />
       <div className="app-window">
         <AppSideBar />
         <div className="resize-bar" />
-        <DiagramContainer engine={diagramEngine} model={diagramModel} />
+        <DiagramContainer engine={diagramEngine} />
       </div>
     </div>
   );

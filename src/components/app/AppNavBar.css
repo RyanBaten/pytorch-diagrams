@@ -1,0 +1,27 @@
+.logo {
+  height: 100%;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+.app-document-title {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin-right: 20px;
+}
+
+.app-navbar-menus {
+  color: white;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 20px;
+}
+
+input[type="file"] {
+  display: none;
+}

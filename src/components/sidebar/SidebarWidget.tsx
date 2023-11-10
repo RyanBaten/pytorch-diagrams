@@ -13,7 +13,6 @@ export default function SideBarWidget(props: SideBarWidgetProps) {
       draggable="true"
       onDragStart={(event) => {
         event.dataTransfer.setData("selected-widget", props.name);
-        // console.log(props.name);
       }}
     >
       {props.children}

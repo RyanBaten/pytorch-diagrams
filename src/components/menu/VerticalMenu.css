@@ -1,0 +1,30 @@
+.vertical-menu {
+  background-color: var(--theme-ui-background-color);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.vertical-menu-button {
+  border: none;
+  color: white;
+  padding: 15px 0px;
+  background-color: var(--theme-ui-background-color);
+  font-size: 14px;
+}
+
+.vertical-menu-children {
+  position: absolute;
+  background-color: var(--theme-ui-background-color);
+  z-index: 2000;
+  opacity: 1;
+  outline-color: var(--theme-ui-highlight-color);
+  outline-width: 2px;
+  outline-style: solid;
+}
+
+.vertical-menu-children * {
+  padding: 4px 8px 4px 8px;
+}
+
+.vertical-menu-children *:hover {
+  background-color: var(--theme-ui-highlight-color);
+}

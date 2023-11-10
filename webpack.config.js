@@ -10,12 +10,14 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     filename: "bundle.js",
+    assetModuleFilename: "assets/[name][ext]",
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".png", ".svg"],
     alias: {
       "@config": path.resolve(__dirname, "src/config/"),
       "@components": path.resolve(__dirname, "src/components/"),
+      "@assets": path.resolve(__dirname, "src/assets/"),
     },
   },
   optimization: {
@@ -31,6 +33,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "index.html",
+      favicon: "./src/assets/logo.png",
     }),
   ],
   module: {
@@ -57,6 +60,10 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: "ts-loader",
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
       },
     ],
   },

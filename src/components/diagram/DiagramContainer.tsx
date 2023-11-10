@@ -1,6 +1,5 @@
 import {
   DiagramEngine,
-  DiagramModel,
   RightAngleLinkFactory,
 } from "@projectstorm/react-diagrams";
 import { CanvasWidget } from "@projectstorm/react-diagrams";
@@ -16,7 +15,6 @@ import * as nodeDefinitions from "@config/node_definitions.json";
 
 interface DiagramContainerProps {
   engine: DiagramEngine;
-  model: DiagramModel;
 }
 
 export default function DiagramContainer(props: DiagramContainerProps) {
@@ -44,7 +42,7 @@ export default function DiagramContainer(props: DiagramContainerProps) {
         const node = createNode(event.dataTransfer.getData("selected-widget"));
         if (node) {
           node.setPosition(props.engine.getRelativeMousePoint(event));
-          props.model.addNode(node);
+          props.engine.getModel().addNode(node);
           props.engine.repaintCanvas();
         }
       }}

@@ -6,5 +6,5 @@ interface NavBarProps {
 }
 
 export default function NavBar(props: NavBarProps) {
-  return <div className="NavBarDiv">{props.children}</div>;
+  return <div className="navbar-div">{props.children}</div>;
 }
