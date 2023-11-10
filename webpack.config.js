@@ -13,7 +13,7 @@ module.exports = {
     assetModuleFilename: "assets/[name][ext]",
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx", ".png"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".png", ".svg"],
     alias: {
       "@config": path.resolve(__dirname, "src/config/"),
       "@components": path.resolve(__dirname, "src/components/"),
@@ -33,6 +33,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "index.html",
+      favicon: "./src/assets/logo.png",
     }),
   ],
   module: {

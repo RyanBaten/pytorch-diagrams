@@ -14,11 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = createRoot(document.querySelector("#application"));
   root.render(
     <div className="window">
-      <AppNavBar />
+      <AppNavBar engine={diagramEngine} />
       <div className="app-window">
         <AppSideBar />
         <div className="resize-bar" />
-        <DiagramContainer engine={diagramEngine} model={diagramModel} />
+        <DiagramContainer engine={diagramEngine} />
       </div>
     </div>
   );

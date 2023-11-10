@@ -10,7 +10,14 @@ export default function VerticalMenu(props: VerticalMenuProps) {
   const [menuStatus, setMenuStatus] = useState(false);
 
   return (
-    <div className="vertical-menu" onBlur={() => setMenuStatus(false)}>
+    <div
+      className="vertical-menu"
+      onBlur={(event) => {
+        if (menuStatus && !event.currentTarget.contains(event.relatedTarget)) {
+          setMenuStatus(false);
+        }
+      }}
+    >
       <button
         className="vertical-menu-button"
         onClick={() => setMenuStatus(!menuStatus)}
@@ -18,7 +25,14 @@ export default function VerticalMenu(props: VerticalMenuProps) {
         {props.title}
       </button>
       {menuStatus && (
-        <div className="vertical-menu-children">{props.children}</div>
+        <div
+          className="vertical-menu-children"
+          onMouseDown={(event) => {
+            event.preventDefault();
+          }}
+        >
+          {props.children}
+        </div>
       )}
     </div>
   );
