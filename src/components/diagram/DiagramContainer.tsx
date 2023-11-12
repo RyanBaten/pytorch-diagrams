@@ -24,7 +24,9 @@ export default function DiagramContainer(props: DiagramContainerProps) {
   props.engine.getLinkFactories().registerFactory(new RightAngleLinkFactory());
 
   const createNode = (name) => {
-    const nodeConfig = nodeDefinitions.find((node) => node.name == name);
+    const nodeConfig = nodeDefinitions["node_definitions"].find(
+      (node) => node.name == name
+    );
     if (!nodeConfig) return;
     const typeMap = {
       icon: IconNodeModel,
