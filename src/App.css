@@ -3,6 +3,7 @@
   padding: 0;
   --theme-ui-background-color: rgb(36, 36, 36);
   --theme-ui-highlight-color: rgb(85, 85, 85);
+  --theme-ui-font-color: white;
   --theme-diagram-background-color: #313131;
   --theme-node-background-color: rgb(146, 146, 146);
   --theme-node-title-color: rgb(122, 122, 122);
@@ -21,18 +22,6 @@
   width: 100%;
   height: 100%;
   flex: 1 1 auto;
-}
-
-.resize-bar {
-  opacity: 50;
-  width: 10px;
-  cursor: col-resize;
-  background-color: rgb(71, 71, 71);
-}
-
-.resize-bar:hover {
-  opacity: 100;
-  background-color: black;
 }
 
 #application {

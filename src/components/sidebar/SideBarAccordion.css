@@ -1,0 +1,20 @@
+.sidebar-accordion-title {
+  all: unset;
+  width: 100%;
+  height: 100% + 20px;
+  font-family: Roboto Mono;
+  padding: 4px 0px 4px 4px;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: var(--theme-ui-highlight-color);
+}
+
+.sidebar-accordion-children {
+  background-color: var(--theme-ui-highlight-color);
+  font-family: Roboto Mono;
+  padding: 0px 0px 0px 24px;
+}
+
+.sidebar-accordion-children * {
+  padding: 4px 0px 4px 0px;
+}

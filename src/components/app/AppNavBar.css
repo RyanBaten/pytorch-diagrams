@@ -6,7 +6,7 @@
 
 .app-document-title {
   font-family: Arial, Helvetica, sans-serif;
-  color: white;
+  color: var(--theme-ui-font-color);
   height: 100%;
   width: 100%;
   display: flex;
@@ -16,7 +16,7 @@
 }
 
 .app-navbar-menus {
-  color: white;
+  color: var(--theme-ui-font-color);
   display: grid;
   grid-auto-flow: column;
   grid-column-gap: 20px;

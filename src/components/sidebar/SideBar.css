@@ -3,10 +3,9 @@
   height: 100%;
   resize: horizontal;
   overflow: auto;
-  background-color: rgb(145, 145, 145);
+  background-color: var(--theme-ui-background-color);
+  color: var(--theme-ui-font-color);
 }
 
-.SideBarWidget {
-  width: 64px;
-  height: 64px;
-}
+/* .SideBarWidget {
+} */
