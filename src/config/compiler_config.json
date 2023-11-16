@@ -1,0 +1,33 @@
+{
+  "Linear": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["Linear"] },
+    "init": {
+      "module_name": "Linear",
+      "parameters": [
+        { "name": "in_features", "node_property": "in_dim", "keyword": false },
+        {
+          "name": "out_features",
+          "node_property": "out_dim",
+          "keyword": false
+        },
+        { "name": "bias", "node_property": "bias", "keyword": true }
+      ]
+    },
+    "forward": {
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "ReLU": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["ReLU"] },
+    "init": {
+      "module_name": "ReLU"
+    },
+    "forward": {
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  }
+}

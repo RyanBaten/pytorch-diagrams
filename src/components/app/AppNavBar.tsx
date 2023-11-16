@@ -32,7 +32,6 @@ export default function AppNavBar(props: AppNavBarProps) {
       const reader = new FileReader();
       reader.readAsText((event.target as HTMLInputElement).files[0]);
       reader.onload = (e) => {
-        console.log(e.target.result);
         let model = new DiagramModel();
         model.deserializeModel(
           JSON.parse(e.target.result as string),
@@ -62,7 +61,17 @@ export default function AppNavBar(props: AppNavBarProps) {
 
   const torchCompiler = new DiagramTorchCompiler();
   const exportTorch = () => {
-    torchCompiler.compile(props.engine.getModel().serialize());
+    const blob = new Blob(
+      [torchCompiler.compile(props.engine.getModel().serialize())],
+      { type: "text/plain" }
+    );
+    const href = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = href;
+    link.download = documentTitle.getContent() + ".py";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const zoomToFit = () => {
