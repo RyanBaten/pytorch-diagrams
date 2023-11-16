@@ -4,6 +4,7 @@ import {
   RightAngleLinkModel,
   DefaultNodeModel,
   DeserializeEvent,
+  PortModelAlignment,
 } from "@projectstorm/react-diagrams";
 import { AbstractModelFactory } from "@projectstorm/react-canvas-core";
 
@@ -58,6 +59,7 @@ export class DiagramNodeModel extends DefaultNodeModel {
             in: true,
             name: inp.name,
             label: inp.label,
+            alignment: PortModelAlignment.LEFT,
           })
         );
       }
@@ -69,6 +71,7 @@ export class DiagramNodeModel extends DefaultNodeModel {
             in: false,
             name: out.name,
             label: out.label,
+            alignment: PortModelAlignment.RIGHT,
           })
         );
       }
@@ -128,6 +131,5 @@ export class DiagramNodeModel extends DefaultNodeModel {
     this.style = event.data.style;
     this.portStyle = event.data.portStyle;
     this.properties = event.data.properties;
-    console.log("deserialize diagramnode");
   }
 }

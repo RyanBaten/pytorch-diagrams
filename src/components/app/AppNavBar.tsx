@@ -5,8 +5,8 @@ import * as logo from "@assets/logo.png";
 
 import { DiagramEngine, DiagramModel } from "@projectstorm/react-diagrams";
 import VerticalMenu from "@components/menu/VerticalMenu";
-import { useState } from "react";
 import { EditableLabel } from "@components/editablelabel/editablelabel";
+import { DiagramTorchCompiler } from "@compiler/compiler";
 
 interface AppNavBarProps {
   engine: DiagramEngine;
@@ -60,6 +60,11 @@ export default function AppNavBar(props: AppNavBarProps) {
     document.body.removeChild(link);
   };
 
+  const torchCompiler = new DiagramTorchCompiler();
+  const exportTorch = () => {
+    torchCompiler.compile(props.engine.getModel().serialize());
+  };
+
   const zoomToFit = () => {
     props.engine.zoomToFit();
   };
@@ -72,6 +77,7 @@ export default function AppNavBar(props: AppNavBarProps) {
           <div onClick={newModel}>New</div>
           <div onClick={importDiagram}>Import Diagram</div>
           <div onClick={exportDiagram}>Export Diagram</div>
+          <div onClick={exportTorch}>Export To Pytorch</div>
         </VerticalMenu>
         <VerticalMenu title="View">
           <div onClick={zoomToFit}>Zoom to Fit</div>

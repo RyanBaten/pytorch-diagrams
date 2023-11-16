@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
       <AppNavBar engine={diagramEngine} />
       <div className="app-window">
         <AppSideBar />
-        <div className="resize-bar" />
         <DiagramContainer engine={diagramEngine} />
       </div>
     </div>
