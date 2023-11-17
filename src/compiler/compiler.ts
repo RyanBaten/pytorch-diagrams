@@ -8,7 +8,6 @@ export class DiagramTorchCompiler {
     const [nodes, links] = this.parse(serialDiagram);
     this.insert_value_nodes(nodes, links);
     const topoNodes = this.topo(nodes, links);
-    console.log(topoNodes);
     return this.generateCode(topoNodes);
   }
 
@@ -132,7 +131,30 @@ export class DiagramTorchCompiler {
         });
       }
       if (compilerNode.init) {
-        init.push(`a = ${compilerNode.init.module_name}()`);
+        var properties = {};
+        var parameters = "";
+        if (node["properties"]) {
+          properties = (node["properties"] as Array<Object>).reduce(
+            (obj, item) => ((obj[item["name"]] = item), obj),
+            {}
+          );
+          parameters = compilerNode.init?.parameters
+            ?.map((parameter) => {
+              const property = properties[parameter.node_property];
+              let value: any;
+              if ("value" in property) {
+                value = property["value"];
+              } else {
+                value = parameter["default"];
+              }
+              value = this._ConvertToPythonValue(value);
+              return parameter["keyword"]
+                ? `${parameter["name"]}=${value}`
+                : `${value}`;
+            })
+            .join(", ");
+        }
+        init.push(`a = ${compilerNode.init.module_name}(${parameters})`);
       }
       if (compilerNode.forward) {
         forward.push(`a = ${compilerNode.init.module_name}(a)`);
@@ -243,5 +265,11 @@ export class DiagramTorchCompiler {
       targetPort: targetPort,
     };
     return [linkId, newLink];
+  }
+
+  _ConvertToPythonValue(value: any) {
+    if (value === true) return "True";
+    if (value === false) return "False";
+    return value;
   }
 }

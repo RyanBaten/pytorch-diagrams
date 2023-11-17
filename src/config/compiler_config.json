@@ -5,13 +5,24 @@
     "init": {
       "module_name": "Linear",
       "parameters": [
-        { "name": "in_features", "node_property": "in_dim", "keyword": false },
+        {
+          "name": "in_features",
+          "node_property": "in_dim",
+          "keyword": false,
+          "default": 512
+        },
         {
           "name": "out_features",
           "node_property": "out_dim",
-          "keyword": false
+          "keyword": false,
+          "default": 512
         },
-        { "name": "bias", "node_property": "bias", "keyword": true }
+        {
+          "name": "bias",
+          "node_property": "bias",
+          "keyword": true,
+          "default": true
+        }
       ]
     },
     "forward": {
