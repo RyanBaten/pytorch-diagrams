@@ -51,7 +51,7 @@ export class DiagramTorchCompiler {
 
   generate_code(topo: Object[], nodes: Object, links: Object): string {
     var imports = new Set();
-    var from_imports = new Object();
+    var from_imports = { "torch.nn": new Set(["Module"]) };
     var init = [];
     var forward = [];
     for (var node of topo) {
@@ -83,6 +83,8 @@ export class DiagramTorchCompiler {
         ([key, value]) => `from ${key} import ${Array.from(value).join(", ")}`
       )
       .join("\n");
+    result += "\n\n";
+    // TODO: the code generation for the module
     return result;
   }
 }
