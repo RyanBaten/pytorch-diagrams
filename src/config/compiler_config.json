@@ -1,4 +1,15 @@
 {
+  "Add": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.add",
+      "forward_in": [
+        { "name": "input", "node_input": "in1", "keyword": false },
+        { "name": "input", "node_input": "in2", "keyword": false }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out1" }]
+    }
+  },
   "Linear": {
     "imports": [],
     "from_imports": { "torch.nn": ["Linear"] },
@@ -26,6 +37,7 @@
       ]
     },
     "forward": {
+      "name": "Linear",
       "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
@@ -37,6 +49,7 @@
       "module_name": "ReLU"
     },
     "forward": {
+      "name": "ReLU",
       "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }

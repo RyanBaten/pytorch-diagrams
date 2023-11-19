@@ -2,7 +2,7 @@ export interface CompilerConfigDefinition {
   imports?: string[];
   from_imports?: object;
   init?: CompilerInitConfig;
-  forward?: CompilerForwardConfig;
+  forward: CompilerForwardConfig;
 }
 
 export interface CompilerInitConfig {
@@ -17,6 +17,7 @@ export interface CompilerInitParameters {
 }
 
 export interface CompilerForwardConfig {
+  name: string;
   forward_in: CompilerForwardInput[];
   forward_out: CompilerForwardOutput[];
 }

@@ -14,7 +14,7 @@ interface AppNavBarProps {
 
 export default function AppNavBar(props: AppNavBarProps) {
   const documentTitle = new EditableLabel({
-    default: "model_diagram",
+    default: "Model",
   });
 
   const newModel = () => {
@@ -33,10 +33,7 @@ export default function AppNavBar(props: AppNavBarProps) {
       reader.readAsText((event.target as HTMLInputElement).files[0]);
       reader.onload = (e) => {
         let model = new DiagramModel();
-        model.deserializeModel(
-          JSON.parse(e.target.result as string),
-          props.engine
-        );
+        model.deserializeModel(JSON.parse(e.target.result as string), props.engine);
         props.engine.setModel(model);
       };
     });
@@ -46,10 +43,7 @@ export default function AppNavBar(props: AppNavBarProps) {
   };
 
   const exportDiagram = () => {
-    const blob = new Blob(
-      [JSON.stringify(props.engine.getModel().serialize(), null, 2)],
-      { type: "application/json" }
-    );
+    const blob = new Blob([JSON.stringify(props.engine.getModel().serialize(), null, 2)], { type: "application/json" });
     const href = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = href;
@@ -61,10 +55,9 @@ export default function AppNavBar(props: AppNavBarProps) {
 
   const torchCompiler = new DiagramTorchCompiler();
   const exportTorch = () => {
-    const blob = new Blob(
-      [torchCompiler.compile(props.engine.getModel().serialize())],
-      { type: "text/plain" }
-    );
+    const blob = new Blob([torchCompiler.compile(documentTitle.getContent(), props.engine.getModel().serialize())], {
+      type: "text/plain",
+    });
     const href = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = href;

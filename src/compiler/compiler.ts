@@ -4,11 +4,11 @@ import { CompilerConfigDefinition } from "@config/compiler_config";
 export class DiagramTorchCompiler {
   constructor() {}
 
-  compile(serialDiagram: Object): string {
+  compile(moduleName: string, serialDiagram: Object): string {
     const [nodes, links] = this.parse(serialDiagram);
     this.insert_value_nodes(nodes, links);
     const topoNodes = this.topo(nodes, links);
-    return this.generateCode(topoNodes, nodes, links);
+    return this.generateCode(moduleName, topoNodes, nodes, links);
   }
 
   parse(serialDiagram: Object): Object[] {
@@ -26,22 +26,12 @@ export class DiagramTorchCompiler {
       if (node["type"] === "value-custom-node") continue;
       for (var port of node["ports"]) {
         if (!this._portLinksToNonvalue(nodeId, port, nodes, links)) continue;
-        var [
-          newValueNode,
-          newNodeId,
-          newPortIn,
-          newPortInId,
-          newPortOut,
-          newPortOutId,
-        ] = this._createValueNode(this._createUID());
+        var [newValueNode, newNodeId, newPortIn, newPortInId, newPortOut, newPortOutId] = this._createValueNode(
+          this._createUID()
+        );
         let newLinkId: string, newLink: Object;
         if (port["in"]) {
-          [newLinkId, newLink] = this._createLink(
-            newNodeId,
-            newPortOutId,
-            nodeId,
-            port["id"]
-          );
+          [newLinkId, newLink] = this._createLink(newNodeId, newPortOutId, nodeId, port["id"]);
           newPortOut["links"].push(newLinkId);
           for (var linkId of port["links"]) {
             var oldLink = links[linkId];
@@ -56,12 +46,7 @@ export class DiagramTorchCompiler {
             newPortIn["links"].push(linkId);
           }
         } else {
-          [newLinkId, newLink] = this._createLink(
-            nodeId,
-            port["id"],
-            newNodeId,
-            newPortInId
-          );
+          [newLinkId, newLink] = this._createLink(nodeId, port["id"], newNodeId, newPortInId);
           newPortIn["links"].push(newLinkId);
           for (var linkId of port["links"]) {
             var oldLink = links[linkId];
@@ -98,10 +83,7 @@ export class DiagramTorchCompiler {
         if (!port["in"]) continue;
         for (var linkId of port["links"]) {
           // Parent nodes are determined by a lookup on the link between the nodes
-          var parentId =
-            links[linkId]["source"] === last["id"]
-              ? links[linkId]["target"]
-              : links[linkId]["source"];
+          var parentId = links[linkId]["source"] === last["id"] ? links[linkId]["target"] : links[linkId]["source"];
           if (!visited.has(parentId)) {
             stack.push(nodes[parentId]);
           }
@@ -112,20 +94,18 @@ export class DiagramTorchCompiler {
     return result;
   }
 
-  generateCode(topo: Object[], nodes: Object, links: Object): string {
+  generateCode(moduleName: string, topo: Object[], nodes: Object, links: Object): string {
     var imports = new Set();
     var fromImports = { "torch.nn": new Set(["Module"]) };
     var init = [];
     var forward = [];
     const topoValueNames = new Set(
-      topo
-        .filter((node) => node["type"] === "value-custom-node")
-        .map((node) => node["name"])
+      topo.filter((node) => node["type"] === "value-custom-node").map((node) => node["name"])
     );
     for (var node of topo) {
+      // TODO: handle values linked to values
       if (!(node["name"] in compilerConfig)) continue;
-      const compilerNode: CompilerConfigDefinition =
-        compilerConfig[node["name"]];
+      const compilerNode: CompilerConfigDefinition = compilerConfig[node["name"]];
       if (compilerNode.imports) {
         compilerNode.imports.forEach((item) => imports.add(item));
       }
@@ -152,23 +132,20 @@ export class DiagramTorchCompiler {
               } else {
                 value = parameter["default"];
               }
-              value = this._ConvertToPythonValue(value);
-              return parameter["keyword"]
-                ? `${parameter["name"]}=${value}`
-                : `${value}`;
+              value = this._convertToPythonValue(value);
+              return parameter["keyword"] ? `${parameter["name"]}=${value}` : `${value}`;
             })
             .join(", ");
         }
-        init.push(`a = ${compilerNode.init.module_name}(${parameters})`);
+        const moduleAttrName = "self." + this._createUID();
+        compilerNode["forward"]["name"] = moduleAttrName;
+        init.push(`${moduleAttrName} = ${compilerNode.init.module_name}(${parameters})`);
       }
       if (compilerNode.forward) {
         var parameters = "";
         const linkedValueNameMap = node["ports"].reduce((obj, port) => {
           const portLink = links[port["links"][0]];
-          const linkedValueId =
-            portLink["source"] === node["id"]
-              ? portLink["target"]
-              : portLink["source"];
+          const linkedValueId = portLink["source"] === node["id"] ? portLink["target"] : portLink["source"];
           obj[port["name"]] = nodes[linkedValueId]["name"];
           return obj;
         }, {});
@@ -180,32 +157,38 @@ export class DiagramTorchCompiler {
           .join(", ");
         const outputs = compilerNode.forward.forward_out
           .map((out) =>
-            topoValueNames.has(linkedValueNameMap[out.node_output])
-              ? linkedValueNameMap[out.node_output]
-              : "_"
+            topoValueNames.has(linkedValueNameMap[out.node_output]) ? linkedValueNameMap[out.node_output] : "_"
           )
           .join(", ");
         // TODO: change the init module name to the name specified in the init
-        forward.push(
-          `${outputs} = ${compilerNode.init.module_name}(${parameters})`
-        );
+        forward.push(`${outputs} = ${compilerNode.forward.name}(${parameters})`);
       }
     }
+    const forwardArgs = this._getAdjacentValues("Start", topo, nodes, links)
+      .sort(this._compareByYValue)
+      .map((node) => node["name"])
+      .join(", ");
+    const returnValues = this._getAdjacentValues("End", topo, nodes, links)
+      .sort(this._compareByYValue)
+      .map((node) => node["name"])
+      .join(", ");
     var result = "";
-    result += Array.from(imports)
+    const importItems = Array.from(imports)
       .map((item) => `import ${item}`)
       .join("\n");
-    result += Object.entries(fromImports)
-      .map(
-        ([key, value]) => `from ${key} import ${Array.from(value).join(", ")}`
-      )
-      .join("\n");
-    result +=
-      "\n\nclass Model(Module):\n    def __init__(self):\n        super(Model, self).__init__()\n";
-    result += init.map((item) => `        ${item}`).join("\n");
-    result += "\n\n    def forward(TODO):\n";
-    result += forward.map((item) => `        ${item}`).join("\n");
-    result += "\n        return TODO";
+    if (importItems) result += importItems + "\n";
+    const fromImportItems =
+      Object.entries(fromImports)
+        .map(([key, value]) => `from ${key} import ${Array.from(value).join(", ")}`)
+        .join("\n") + "\n";
+    if (fromImportItems) result += fromImportItems + "\n";
+    result += `\nclass ${moduleName}(Module):\n    def __init__(self):\n        super(Model, self).__init__()`;
+    const initItems = init.map((item) => `        ${item}`).join("\n");
+    if (initItems) result += "\n" + initItems;
+    result += `\n\n    def forward(${forwardArgs}):`;
+    const forwardItems = forward.map((item) => `        ${item}`).join("\n");
+    if (forwardItems) result += "\n" + forwardItems;
+    result += `\n        return ${returnValues}`;
     return result;
   }
 
@@ -218,18 +201,11 @@ export class DiagramTorchCompiler {
     }
   }
 
-  _portLinksToNonvalue(
-    nodeId: string,
-    port: Object,
-    nodes: Object,
-    links: Object
-  ): boolean {
+  _portLinksToNonvalue(nodeId: string, port: Object, nodes: Object, links: Object): boolean {
     var linksToNonvalue = false;
     for (var linkId of port["links"]) {
       var isSource = links[linkId]["source"] === nodeId;
-      var parentId = isSource
-        ? links[linkId]["target"]
-        : links[linkId]["source"];
+      var parentId = isSource ? links[linkId]["target"] : links[linkId]["source"];
       var parent_node = nodes[parentId];
       if (parent_node["type"] !== "value-custom-node") {
         linksToNonvalue = true;
@@ -281,12 +257,7 @@ export class DiagramTorchCompiler {
     return [valueNode, nodeId, portIn, portInId, portOut, portOutId];
   }
 
-  _createLink(
-    source: string,
-    sourcePort: string,
-    target: string,
-    targetPort: string
-  ): any[] {
+  _createLink(source: string, sourcePort: string, target: string, targetPort: string): any[] {
     const linkId = this._createUID();
     const newLink = {
       id: linkId,
@@ -298,9 +269,29 @@ export class DiagramTorchCompiler {
     return [linkId, newLink];
   }
 
-  _ConvertToPythonValue(value: any) {
+  _convertToPythonValue(value: any) {
     if (value === true) return "True";
     if (value === false) return "False";
     return value;
+  }
+
+  _getAdjacentValues(nodeType: string, topo: Object[], nodes: Object, links: Object): Object[] {
+    var result = [];
+    topo
+      .filter((node) => node["name"] === nodeType)
+      .forEach((node) => {
+        node["ports"][0]["links"].forEach((linkId) => {
+          const link = links[linkId];
+          const linkNode = link["source"] === node["id"] ? nodes[link["target"]] : nodes[link["source"]];
+          if (linkNode["type"] === "value-custom-node") result.push(linkNode);
+        });
+      });
+    return result;
+  }
+
+  _compareByYValue(nodeA, nodeB) {
+    if (nodeA["y"] < nodeB["y"]) return -1;
+    if (nodeA["y"] > nodeB["y"]) return 1;
+    return 0;
   }
 }
