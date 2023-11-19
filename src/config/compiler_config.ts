@@ -17,8 +17,8 @@ export interface CompilerInitParameters {
 }
 
 export interface CompilerForwardConfig {
-  forward_in?: CompilerForwardInput[];
-  forward_out?: CompilerForwardOutput[];
+  forward_in: CompilerForwardInput[];
+  forward_out: CompilerForwardOutput[];
 }
 
 export interface CompilerForwardInput {

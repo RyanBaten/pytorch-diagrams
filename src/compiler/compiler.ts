@@ -8,7 +8,7 @@ export class DiagramTorchCompiler {
     const [nodes, links] = this.parse(serialDiagram);
     this.insert_value_nodes(nodes, links);
     const topoNodes = this.topo(nodes, links);
-    return this.generateCode(topoNodes);
+    return this.generateCode(topoNodes, nodes, links);
   }
 
   parse(serialDiagram: Object): Object[] {
@@ -112,11 +112,16 @@ export class DiagramTorchCompiler {
     return result;
   }
 
-  generateCode(topo: Object[]): string {
+  generateCode(topo: Object[], nodes: Object, links: Object): string {
     var imports = new Set();
     var fromImports = { "torch.nn": new Set(["Module"]) };
     var init = [];
     var forward = [];
+    const topoValueNames = new Set(
+      topo
+        .filter((node) => node["type"] === "value-custom-node")
+        .map((node) => node["name"])
+    );
     for (var node of topo) {
       if (!(node["name"] in compilerConfig)) continue;
       const compilerNode: CompilerConfigDefinition =
@@ -157,7 +162,33 @@ export class DiagramTorchCompiler {
         init.push(`a = ${compilerNode.init.module_name}(${parameters})`);
       }
       if (compilerNode.forward) {
-        forward.push(`a = ${compilerNode.init.module_name}(a)`);
+        var parameters = "";
+        const linkedValueNameMap = node["ports"].reduce((obj, port) => {
+          const portLink = links[port["links"][0]];
+          const linkedValueId =
+            portLink["source"] === node["id"]
+              ? portLink["target"]
+              : portLink["source"];
+          obj[port["name"]] = nodes[linkedValueId]["name"];
+          return obj;
+        }, {});
+        parameters = compilerNode.forward.forward_in
+          .map((inp) => {
+            const value = linkedValueNameMap[inp.node_input];
+            return inp.keyword ? `${inp.name}=${value}` : `${value}`;
+          })
+          .join(", ");
+        const outputs = compilerNode.forward.forward_out
+          .map((out) =>
+            topoValueNames.has(linkedValueNameMap[out.node_output])
+              ? linkedValueNameMap[out.node_output]
+              : "_"
+          )
+          .join(", ");
+        // TODO: change the init module name to the name specified in the init
+        forward.push(
+          `${outputs} = ${compilerNode.init.module_name}(${parameters})`
+        );
       }
     }
     var result = "";
