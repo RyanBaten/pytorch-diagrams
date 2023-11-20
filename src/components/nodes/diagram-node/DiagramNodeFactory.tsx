@@ -12,6 +12,7 @@ export class DiagramNodeFactory extends AbstractReactFactory<
   }
 
   generateModel(initialConfig) {
+    console.log(initialConfig);
     return new DiagramNodeModel();
   }
 

@@ -34,7 +34,13 @@ export default function DiagramContainer(props: DiagramContainerProps) {
       value: ValueNodeModel,
     };
     const nodeType = typeMap[nodeConfig.type];
-    return new nodeType({ ...nodeConfig.definition, name: name });
+    // parse + stringify results in a deep copy.
+    // Without deep copy, all nodes of the same time will have the same reference to a property.
+    // So editing a property on one node will change it for other nodes as well.
+    return new nodeType({
+      ...JSON.parse(JSON.stringify(nodeConfig.definition)),
+      name: name,
+    });
   };
 
   return (
