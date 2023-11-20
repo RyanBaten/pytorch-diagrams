@@ -6,7 +6,7 @@ import * as logo from "@assets/logo.png";
 import { DiagramEngine, DiagramModel } from "@projectstorm/react-diagrams";
 import VerticalMenu from "@components/menu/VerticalMenu";
 import { EditableLabel } from "@components/editablelabel/editablelabel";
-import { DiagramTorchCompiler } from "@compiler/compiler";
+import { DiagramTorchCompiler } from "@compiler/DiagramTorchCompiler";
 
 interface AppNavBarProps {
   engine: DiagramEngine;

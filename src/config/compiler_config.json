@@ -37,7 +37,7 @@
       ]
     },
     "forward": {
-      "name": "Linear",
+      "name": "TBD",
       "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
@@ -49,7 +49,7 @@
       "module_name": "ReLU"
     },
     "forward": {
-      "name": "ReLU",
+      "name": "TBD",
       "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }

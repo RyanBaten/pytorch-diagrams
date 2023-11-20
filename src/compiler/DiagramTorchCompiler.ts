@@ -1,14 +1,19 @@
 import * as compilerConfig from "@config/compiler_config.json";
 import { CompilerConfigDefinition } from "@config/compiler_config";
+import { IdGenerator } from "./IdGenerator";
 
 export class DiagramTorchCompiler {
   constructor() {}
 
   compile(moduleName: string, serialDiagram: Object): string {
     const [nodes, links] = this.parse(serialDiagram);
-    this.insert_value_nodes(nodes, links);
+    const idGenerator = new IdGenerator();
+    Object.values(nodes).forEach((node) => {
+      if (node["type"] === "value-custom-node") idGenerator.generateId(node["name"]);
+    });
+    this.insert_value_nodes(nodes, links, idGenerator);
     const topoNodes = this.topo(nodes, links);
-    return this.generateCode(moduleName, topoNodes, nodes, links);
+    return this.generateCode(moduleName, topoNodes, nodes, links, idGenerator);
   }
 
   parse(serialDiagram: Object): Object[] {
@@ -20,14 +25,13 @@ export class DiagramTorchCompiler {
     return [nodes["models"], links["models"]];
   }
 
-  insert_value_nodes(nodes: Object, links: Object) {
-    //var valueNames = this._getValueNames(nodes)
+  insert_value_nodes(nodes: Object, links: Object, idGenerator: IdGenerator) {
     for (var [nodeId, node] of Object.entries(nodes)) {
       if (node["type"] === "value-custom-node") continue;
       for (var port of node["ports"]) {
         if (!this._portLinksToNonvalue(nodeId, port, nodes, links)) continue;
         var [newValueNode, newNodeId, newPortIn, newPortInId, newPortOut, newPortOutId] = this._createValueNode(
-          this._createUID()
+          idGenerator.generateId()
         );
         let newLinkId: string, newLink: Object;
         if (port["in"]) {
@@ -94,7 +98,7 @@ export class DiagramTorchCompiler {
     return result;
   }
 
-  generateCode(moduleName: string, topo: Object[], nodes: Object, links: Object): string {
+  generateCode(moduleName: string, topo: Object[], nodes: Object, links: Object, idGenerator: IdGenerator): string {
     var imports = new Set();
     var fromImports = { "torch.nn": new Set(["Module"]) };
     var init = [];
@@ -103,7 +107,20 @@ export class DiagramTorchCompiler {
       topo.filter((node) => node["type"] === "value-custom-node").map((node) => node["name"])
     );
     for (var node of topo) {
-      // TODO: handle values linked to values
+      if (node["type"] === "value-custom-node") {
+        node["ports"]
+          .filter((port) => port["in"])
+          .forEach((port) => {
+            port["links"].forEach((linkId) => {
+              var parentNode =
+                links[linkId]["source"] === node["id"]
+                  ? nodes[links[linkId]["target"]]
+                  : nodes[links[linkId]["source"]];
+              if (parentNode["type"] === "value-custom-node") forward.push(`${node["name"]} = ${parentNode["name"]}`);
+            });
+          });
+        continue;
+      }
       if (!(node["name"] in compilerConfig)) continue;
       const compilerNode: CompilerConfigDefinition = compilerConfig[node["name"]];
       if (compilerNode.imports) {
@@ -137,7 +154,7 @@ export class DiagramTorchCompiler {
             })
             .join(", ");
         }
-        const moduleAttrName = "self." + this._createUID();
+        const moduleAttrName = "self." + idGenerator.generateId(undefined, compilerNode.init.module_name.toLowerCase());
         compilerNode["forward"]["name"] = moduleAttrName;
         init.push(`${moduleAttrName} = ${compilerNode.init.module_name}(${parameters})`);
       }
@@ -160,7 +177,6 @@ export class DiagramTorchCompiler {
             topoValueNames.has(linkedValueNameMap[out.node_output]) ? linkedValueNameMap[out.node_output] : "_"
           )
           .join(", ");
-        // TODO: change the init module name to the name specified in the init
         forward.push(`${outputs} = ${compilerNode.forward.name}(${parameters})`);
       }
     }
@@ -190,15 +206,6 @@ export class DiagramTorchCompiler {
     if (forwardItems) result += "\n" + forwardItems;
     result += `\n        return ${returnValues}`;
     return result;
-  }
-
-  _getValueNames(nodes: Object) {
-    var result = new Set();
-    for (var [node_id, node] of Object.entries(nodes)) {
-      if (node["type"] === "value-custom-node") {
-        result.add(node["name"]);
-      }
-    }
   }
 
   _portLinksToNonvalue(nodeId: string, port: Object, nodes: Object, links: Object): boolean {

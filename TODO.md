@@ -22,6 +22,7 @@
 
 # Links
 
-- Link arrows
+- Bug: Link arrow from start icon node not right angled after loading from file
+
 - Links shouldn't be created that connect to nothing
 - Link routing to avoid visual bugs where the link doesn't properly touch the port
