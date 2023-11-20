@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import "./SideBarWidget.css";
 
 interface SideBarWidgetProps {
   name: string;

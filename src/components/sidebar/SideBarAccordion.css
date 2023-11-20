@@ -1,3 +1,7 @@
+.sidebar-accordion {
+  direction: ltr;
+}
+
 .sidebar-accordion-title {
   all: unset;
   width: 100%;
@@ -12,7 +16,6 @@
 .sidebar-accordion-children {
   background-color: var(--theme-ui-highlight-color);
   font-family: Roboto Mono;
-  padding: 0px 0px 0px 24px;
 }
 
 .sidebar-accordion-children * {

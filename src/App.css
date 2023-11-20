@@ -3,6 +3,7 @@
   padding: 0;
   --theme-ui-background-color: rgb(36, 36, 36);
   --theme-ui-highlight-color: rgb(85, 85, 85);
+  --theme-ui-highlight2-color: rgb(126, 126, 126);
   --theme-ui-font-color: white;
   --theme-diagram-background-color: #313131;
   --theme-node-background-color: rgb(146, 146, 146);
