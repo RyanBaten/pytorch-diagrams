@@ -10,7 +10,7 @@
       "forward_out": [{ "name": "output", "node_output": "out1" }]
     }
   },
-  "mul": {
+  "Mul": {
     "imports": ["torch"],
     "forward": {
       "name": "torch.mul",
