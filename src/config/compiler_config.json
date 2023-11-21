@@ -10,6 +10,17 @@
       "forward_out": [{ "name": "output", "node_output": "out1" }]
     }
   },
+  "mul": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.mul",
+      "forward_in": [
+        { "name": "input", "node_input": "in1", "keyword": false },
+        { "name": "input", "node_input": "in2", "keyword": false }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out1" }]
+    }
+  },
   "Linear": {
     "imports": [],
     "from_imports": { "torch.nn": ["Linear"] },

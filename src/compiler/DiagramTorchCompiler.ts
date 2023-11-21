@@ -201,7 +201,7 @@ export class DiagramTorchCompiler {
     result += `\nclass ${moduleName}(Module):\n    def __init__(self):\n        super(Model, self).__init__()`;
     const initItems = init.map((item) => `        ${item}`).join("\n");
     if (initItems) result += "\n" + initItems;
-    result += `\n\n    def forward(${forwardArgs}):`;
+    result += `\n\n    def forward(self, ${forwardArgs}):`;
     const forwardItems = forward.map((item) => `        ${item}`).join("\n");
     if (forwardItems) result += "\n" + forwardItems;
     result += `\n        return ${returnValues}`;
