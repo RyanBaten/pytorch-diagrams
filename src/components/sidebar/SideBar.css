@@ -1,0 +1,25 @@
+.SideBarDiv {
+  width: 15%;
+  height: 100%;
+  resize: horizontal;
+  overflow-y: auto;
+  background-color: var(--theme-ui-background-color);
+  color: var(--theme-ui-font-color);
+  direction: rtl;
+}
+
+.SideBarDiv::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: var(--theme-ui-highlight2-color);
+}
+
+.SideBarDiv::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: var(--theme-ui-highlight2-color);
+}
+
+.SideBarDiv::-webkit-scrollbar-thumb {
+  background-color: var(--theme-ui-background-color);
+  border-radius: 10px;
+}

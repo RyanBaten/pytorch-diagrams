@@ -1,0 +1,69 @@
+.diagram-node {
+  background-color: var(--theme-node-background-color);
+  border-radius: var(--theme-node-border-radius);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.diagram-node-body {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.diagram-node-title {
+  text-align: center;
+  width: 100%;
+  background-color: var(--theme-node-title-color);
+  border-radius: var(--theme-node-title-radius);
+}
+
+.diagram-node-inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 4px 4px 4px 4px;
+}
+
+.diagram-node-outputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 4px 4px 4px 4px;
+}
+
+.diagram-node-properties {
+  display: flex;
+  flex-direction: column;
+}
+
+.diagram-node-property {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 4px 4px 4px 4px;
+}
+
+.diagram-labeled-port {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.diagram-node-port {
+  width: 12px;
+  height: 12px;
+  margin: 2px;
+  border-radius: 4px;
+  background-color: var(--port-color, rgb(83, 83, 83));
+  cursor: pointer;
+}
+
+.diagram-node-port:hover {
+  background-color: var(--hover-color, rgb(0, 0, 0));
+}
+
+input[type="text"] {
+  width: 48px;
+}

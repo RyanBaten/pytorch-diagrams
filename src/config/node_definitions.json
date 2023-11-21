@@ -1,0 +1,130 @@
+{
+  "node_menus": ["common", "operations", "layers", "activations"],
+  "node_definitions": [
+    {
+      "name": "Start",
+      "type": "icon",
+      "menus": ["common"],
+      "definition": {
+        "icon": "Login",
+        "style": {
+          "backgroundColor": "#3e944c"
+        },
+        "outputs": [{ "name": "out", "label": "" }]
+      }
+    },
+    {
+      "name": "End",
+      "type": "icon",
+      "menus": ["common"],
+      "definition": {
+        "icon": "Login",
+        "style": {
+          "backgroundColor": "#ab4b4e"
+        },
+        "inputs": [{ "name": "in", "label": "" }]
+      }
+    },
+    {
+      "name": "Value",
+      "type": "value",
+      "menus": ["common"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#a0eb9d",
+          "--theme-node-title-color": "#65c761"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }]
+      }
+    },
+    {
+      "name": "Add",
+      "type": "icon",
+      "menus": ["operations"],
+      "definition": {
+        "icon": "add_circle",
+        "style": {
+          "backgroundColor": "#dba2a2"
+        },
+        "inputs": [
+          { "name": "in1", "label": "" },
+          { "name": "in2", "label": "" }
+        ],
+        "outputs": [
+          {
+            "name": "out1",
+            "label": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "Mul",
+      "type": "icon",
+      "menus": ["operations"],
+      "definition": {
+        "icon": "adjust",
+        "style": {
+          "backgroundColor": "#dba2a2"
+        },
+        "inputs": [
+          { "name": "in1", "label": "" },
+          { "name": "in2", "label": "" }
+        ],
+        "outputs": [
+          {
+            "name": "out1",
+            "label": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "Linear",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [{ "name": "in", "label": "in" }],
+        "outputs": [{ "name": "out", "label": "out" }],
+        "properties": [
+          {
+            "name": "in_dim",
+            "label": "in_dim",
+            "type": "string",
+            "inputStyle": { "width": "48px" }
+          },
+          {
+            "name": "out_dim",
+            "label": "out_dim",
+            "type": "string",
+            "inputStyle": { "width": "48px" }
+          },
+          {
+            "name": "bias",
+            "label": "bias",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true }
+          }
+        ]
+      }
+    },
+    {
+      "name": "ReLU",
+      "type": "diagram",
+      "menus": ["activations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#ebd2a4",
+          "--theme-node-title-color": "#d6a54b"
+        },
+        "inputs": [{ "name": "in", "label": "in" }],
+        "outputs": [{ "name": "out", "label": "out" }]
+      }
+    }
+  ]
+}

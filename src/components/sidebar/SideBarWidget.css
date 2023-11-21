@@ -1,0 +1,12 @@
+.SideBarWidget {
+  padding: 0px 0px 0px 24px;
+}
+
+.SideBarWidget:hover {
+  cursor: grab;
+  background-color: var(--theme-ui-highlight2-color);
+}
+
+.SideBarWidget:active {
+  cursor: grabbing;
+}

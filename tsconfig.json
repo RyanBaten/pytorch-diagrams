@@ -1,0 +1,16 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "declaration": false,
+    "jsx": "react-jsx",
+    "target": "es6",
+    "module": "CommonJS",
+    "paths": {
+      "@config/*": ["./src/config/*"],
+      "@compiler/*": ["./src/compiler/*"],
+      "@components/*": ["./src/components/*"]
+    },
+    "resolveJsonModule": true
+  },
+  "include": ["./src", "index.d.ts"]
+}
