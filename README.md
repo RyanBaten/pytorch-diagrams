@@ -1,5 +1,5 @@
-<h1 style="display:flex;justify-content:center">
-  <img src="src/assets/logo.png" height="48px" width="48px" valign="center"/> pytorch-diagrams
+<h1 align="center">
+  <img src="src/assets/logo.png" height="48px" width="48px" valign="bottom"/> pytorch-diagrams
 </h1>
 
 <h3 align="center">
