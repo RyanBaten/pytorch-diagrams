@@ -1,5 +1,7 @@
 .SideBarDiv {
   width: 15%;
+  min-width: max-content;
+  max-width: 200px;
   height: 100%;
   resize: horizontal;
   overflow-y: auto;
