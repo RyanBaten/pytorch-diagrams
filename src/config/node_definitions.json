@@ -8,7 +8,7 @@
       "definition": {
         "icon": "Login",
         "style": {
-          "backgroundColor": "#3e944c"
+          "--theme-node-background-color": "#3e944c"
         },
         "outputs": [{ "name": "out", "label": "" }]
       }
@@ -20,7 +20,7 @@
       "definition": {
         "icon": "Login",
         "style": {
-          "backgroundColor": "#ab4b4e"
+          "--theme-node-background-color": "#ab4b4e"
         },
         "inputs": [{ "name": "in", "label": "" }]
       }
@@ -39,13 +39,13 @@
       }
     },
     {
-      "name": "Add",
+      "name": "add",
       "type": "icon",
       "menus": ["operations"],
       "definition": {
         "icon": "add_circle",
         "style": {
-          "backgroundColor": "#dba2a2"
+          "--theme-node-background-color": "#dba2a2"
         },
         "inputs": [
           { "name": "in1", "label": "" },
@@ -53,20 +53,20 @@
         ],
         "outputs": [
           {
-            "name": "out1",
+            "name": "out",
             "label": ""
           }
         ]
       }
     },
     {
-      "name": "Mul",
+      "name": "matmul",
       "type": "icon",
       "menus": ["operations"],
       "definition": {
-        "icon": "adjust",
+        "icon": "alternate_email",
         "style": {
-          "backgroundColor": "#dba2a2"
+          "--theme-node-background-color": "#dba2a2"
         },
         "inputs": [
           { "name": "in1", "label": "" },
@@ -74,8 +74,208 @@
         ],
         "outputs": [
           {
-            "name": "out1",
+            "name": "out",
             "label": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "mul",
+      "type": "icon",
+      "menus": ["operations"],
+      "definition": {
+        "icon": "adjust",
+        "style": {
+          "--theme-node-background-color": "#dba2a2"
+        },
+        "inputs": [
+          { "name": "in1", "label": "" },
+          { "name": "in2", "label": "" }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "pow",
+      "type": "diagram",
+      "menus": ["operations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#dba2a2",
+          "--theme-node-title-color": "#ba7d7d"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ],
+        "properties": [
+          {
+            "name": "exponent",
+            "label": "exp",
+            "type": "string",
+            "inputStyle": { "width": "24px" }
+          }
+        ]
+      }
+    },
+    {
+      "name": "sqrt",
+      "type": "diagram",
+      "menus": ["operations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#dba2a2",
+          "--theme-node-title-color": "#ba7d7d"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "square",
+      "type": "diagram",
+      "menus": ["operations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#dba2a2",
+          "--theme-node-title-color": "#ba7d7d"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "sub",
+      "type": "icon",
+      "menus": ["operations"],
+      "definition": {
+        "icon": "do_not_disturb_on",
+        "style": {
+          "--theme-node-background-color": "#dba2a2"
+        },
+        "inputs": [
+          { "name": "in1", "label": "" },
+          { "name": "in2", "label": "" }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "Conv2d",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "in_channels",
+            "label": "in_ch",
+            "type": "string",
+            "inputStyle": { "width": "48px" }
+          },
+          {
+            "name": "out_channels",
+            "label": "out_ch",
+            "type": "string",
+            "inputStyle": { "width": "48px" }
+          },
+          {
+            "name": "kernel_size",
+            "label": "kernel",
+            "type": "string",
+            "inputStyle": { "width": "24px" }
+          },
+          {
+            "name": "stride",
+            "label": "stride",
+            "type": "string",
+            "inputStyle": { "width": "24px" }
+          },
+          {
+            "name": "padding",
+            "label": "padding",
+            "type": "string",
+            "inputStyle": { "width": "24px" }
+          },
+          {
+            "name": "dilation",
+            "label": "dilation",
+            "type": "string",
+            "inputStyle": { "width": "24px" }
+          },
+          {
+            "name": "groups",
+            "label": "groups",
+            "type": "string",
+            "inputStyle": { "width": "24px" }
+          },
+          {
+            "name": "bias",
+            "label": "bias",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true }
+          },
+          {
+            "name": "padding_mode",
+            "label": "pad_mode",
+            "type": "string",
+            "inputStyle": { "width": "48px" }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Dropout",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "p",
+            "label": "p",
+            "type": "string",
+            "inputStyle": { "width": "24px" }
+          },
+          {
+            "name": "inplace",
+            "label": "inplace",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true }
           }
         ]
       }
@@ -89,8 +289,8 @@
           "--theme-node-background-color": "#7aa5f5",
           "--theme-node-title-color": "#5980c9"
         },
-        "inputs": [{ "name": "in", "label": "in" }],
-        "outputs": [{ "name": "out", "label": "out" }],
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
         "properties": [
           {
             "name": "in_dim",

@@ -121,6 +121,10 @@ export class DiagramTorchCompiler {
           });
         continue;
       }
+      var properties = {};
+      if (node["properties"]) {
+        properties = (node["properties"] as Array<Object>).reduce((obj, item) => ((obj[item["name"]] = item), obj), {});
+      }
       if (!(node["name"] in compilerConfig)) continue;
       const compilerNode: CompilerConfigDefinition = compilerConfig[node["name"]];
       if (compilerNode.imports) {
@@ -133,13 +137,8 @@ export class DiagramTorchCompiler {
         });
       }
       if (compilerNode.init) {
-        var properties = {};
         var parameters = "";
         if (node["properties"]) {
-          properties = (node["properties"] as Array<Object>).reduce(
-            (obj, item) => ((obj[item["name"]] = item), obj),
-            {}
-          );
           parameters = compilerNode.init?.parameters
             ?.map((parameter) => {
               const property = properties[parameter.node_property];
@@ -168,7 +167,9 @@ export class DiagramTorchCompiler {
         }, {});
         parameters = compilerNode.forward.forward_in
           .map((inp) => {
-            const value = linkedValueNameMap[inp.node_input];
+            let value;
+            if (inp.node_input) value = linkedValueNameMap[inp.node_input];
+            if (inp.property) value = properties[inp.property]["value"];
             return inp.keyword ? `${inp.name}=${value}` : `${value}`;
           })
           .join(", ");
