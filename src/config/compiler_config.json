@@ -1,5 +1,5 @@
 {
-  "Add": {
+  "add": {
     "imports": ["torch"],
     "forward": {
       "name": "torch.add",
@@ -7,10 +7,21 @@
         { "name": "input", "node_input": "in1", "keyword": false },
         { "name": "input", "node_input": "in2", "keyword": false }
       ],
-      "forward_out": [{ "name": "output", "node_output": "out1" }]
+      "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
-  "Mul": {
+  "matmul": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.matmul",
+      "forward_in": [
+        { "name": "input", "node_input": "in1", "keyword": false },
+        { "name": "input", "node_input": "in2", "keyword": false }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "mul": {
     "imports": ["torch"],
     "forward": {
       "name": "torch.mul",
@@ -18,7 +29,139 @@
         { "name": "input", "node_input": "in1", "keyword": false },
         { "name": "input", "node_input": "in2", "keyword": false }
       ],
-      "forward_out": [{ "name": "output", "node_output": "out1" }]
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "pow": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.pow",
+      "forward_in": [
+        { "name": "input", "node_input": "in", "keyword": false },
+        { "name": "exponent", "property": "exponent", "keyword": false }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "sqrt": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.sqrt",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "square": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.square",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "sub": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.sub",
+      "forward_in": [
+        { "name": "input", "node_input": "in1", "keyword": false },
+        { "name": "input", "node_input": "in2", "keyword": false }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "Conv2d": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["Conv2d"] },
+    "init": {
+      "module_name": "Conv2d",
+      "parameters": [
+        {
+          "name": "in_channels",
+          "node_property": "in_channels",
+          "keyword": false,
+          "default": 16
+        },
+        {
+          "name": "out_channels",
+          "node_property": "out_channels",
+          "keyword": false,
+          "default": 16
+        },
+        {
+          "name": "kernel_size",
+          "node_property": "kernel_size",
+          "keyword": false,
+          "default": 3
+        },
+        {
+          "name": "stride",
+          "node_property": "stride",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "padding",
+          "node_property": "padding",
+          "keyword": true,
+          "default": 0
+        },
+        {
+          "name": "dilation",
+          "node_property": "dilation",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "groups",
+          "node_property": "groups",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "bias",
+          "node_property": "bias",
+          "keyword": true,
+          "default": true
+        },
+        {
+          "name": "padding_mode",
+          "node_property": "padding_mode",
+          "keyword": true,
+          "default": "'zeros'"
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "Dropout": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["Dropout"] },
+    "init": {
+      "module_name": "Dropout",
+      "parameters": [
+        {
+          "name": "p",
+          "node_property": "p",
+          "keyword": false,
+          "default": 0.5
+        },
+        {
+          "name": "inplace",
+          "node_property": "inplace",
+          "keyword": true,
+          "default": true
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
   "Linear": {

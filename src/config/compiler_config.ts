@@ -24,7 +24,8 @@ export interface CompilerForwardConfig {
 
 export interface CompilerForwardInput {
   name: string;
-  node_input: string;
+  node_input?: string;
+  property?: string;
   keyword: boolean;
 }
 
