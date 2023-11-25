@@ -1,7 +1,4 @@
-import {
-  DiagramEngine,
-  RightAngleLinkFactory,
-} from "@projectstorm/react-diagrams";
+import { DiagramEngine, RightAngleLinkFactory } from "@projectstorm/react-diagrams";
 import { CanvasWidget } from "@projectstorm/react-diagrams";
 import "./Diagram.css";
 import { DiagramNodeModel } from "@components/nodes/diagram-node/DiagramNodeModel";
@@ -10,6 +7,7 @@ import { IconNodeModel } from "@components/nodes/icon-node/IconNodeModel";
 import { IconNodeFactory } from "@components/nodes/icon-node/IconNodeFactory";
 import { ValueNodeModel } from "@components/nodes/value-node/ValueNodeModel";
 import { ValueNodeFactory } from "@components/nodes/value-node/ValueNodeFactory";
+import RightAnglePortFactory from "@components/right-angle-port/RightAnglePortFactory";
 
 import * as nodeDefinitions from "@config/node_definitions.json";
 
@@ -22,11 +20,10 @@ export default function DiagramContainer(props: DiagramContainerProps) {
   props.engine.getNodeFactories().registerFactory(new IconNodeFactory());
   props.engine.getNodeFactories().registerFactory(new ValueNodeFactory());
   props.engine.getLinkFactories().registerFactory(new RightAngleLinkFactory());
+  props.engine.getPortFactories().registerFactory(new RightAnglePortFactory());
 
   const createNode = (name) => {
-    const nodeConfig = nodeDefinitions["node_definitions"].find(
-      (node) => node.name == name
-    );
+    const nodeConfig = nodeDefinitions["node_definitions"].find((node) => node.name == name);
     if (!nodeConfig) return;
     const typeMap = {
       icon: IconNodeModel,

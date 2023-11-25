@@ -1,18 +1,5 @@
-import {
-  DefaultPortModel,
-  LinkModel,
-  RightAngleLinkModel,
-  DefaultNodeModel,
-  DeserializeEvent,
-} from "@projectstorm/react-diagrams";
-import { AbstractModelFactory } from "@projectstorm/react-canvas-core";
-import { ObjectLiteralElement } from "typescript";
-
-export class RightAnglePortModel extends DefaultPortModel {
-  createLinkModel(factory?: AbstractModelFactory<LinkModel>) {
-    return new RightAngleLinkModel();
-  }
-}
+import { DefaultNodeModel, DeserializeEvent } from "@projectstorm/react-diagrams";
+import { RightAnglePortModel } from "@components/right-angle-port/RightAnglePortModel";
 
 interface ValueNodePort {
   name: string;
