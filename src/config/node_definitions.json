@@ -200,55 +200,64 @@
             "name": "in_channels",
             "label": "in_ch",
             "type": "string",
-            "inputStyle": { "width": "48px" }
+            "inputStyle": { "width": "48px" },
+            "default": 16
           },
           {
             "name": "out_channels",
             "label": "out_ch",
             "type": "string",
-            "inputStyle": { "width": "48px" }
+            "inputStyle": { "width": "48px" },
+            "default": 16
           },
           {
             "name": "kernel_size",
             "label": "kernel",
             "type": "string",
-            "inputStyle": { "width": "24px" }
+            "inputStyle": { "width": "24px" },
+            "default": 3
           },
           {
             "name": "stride",
             "label": "stride",
             "type": "string",
-            "inputStyle": { "width": "24px" }
+            "inputStyle": { "width": "24px" },
+            "default": 1
           },
           {
             "name": "padding",
             "label": "padding",
             "type": "string",
-            "inputStyle": { "width": "24px" }
+            "inputStyle": { "width": "24px" },
+            "default": 0
           },
           {
             "name": "dilation",
             "label": "dilation",
             "type": "string",
-            "inputStyle": { "width": "24px" }
+            "inputStyle": { "width": "24px" },
+            "default": 1
           },
           {
             "name": "groups",
             "label": "groups",
             "type": "string",
-            "inputStyle": { "width": "24px" }
+            "inputStyle": { "width": "24px" },
+            "default": 1
           },
           {
             "name": "bias",
             "label": "bias",
             "type": "checkbox",
-            "inputProps": { "defaultChecked": true }
+            "inputProps": { "defaultChecked": true },
+            "default": true
           },
           {
             "name": "padding_mode",
             "label": "pad_mode",
             "type": "string",
-            "inputStyle": { "width": "48px" }
+            "inputStyle": { "width": "48px" },
+            "default": "'zeros'"
           }
         ]
       }
@@ -269,13 +278,15 @@
             "name": "p",
             "label": "p",
             "type": "string",
-            "inputStyle": { "width": "24px" }
+            "inputStyle": { "width": "24px" },
+            "default": 0.5
           },
           {
             "name": "inplace",
             "label": "inplace",
             "type": "checkbox",
-            "inputProps": { "defaultChecked": true }
+            "inputProps": { "defaultChecked": true },
+            "default": true
           }
         ]
       }
@@ -296,19 +307,22 @@
             "name": "in_dim",
             "label": "in_dim",
             "type": "string",
-            "inputStyle": { "width": "48px" }
+            "inputStyle": { "width": "48px" },
+            "default": 512
           },
           {
             "name": "out_dim",
             "label": "out_dim",
             "type": "string",
-            "inputStyle": { "width": "48px" }
+            "inputStyle": { "width": "48px" },
+            "default": 512
           },
           {
             "name": "bias",
             "label": "bias",
             "type": "checkbox",
-            "inputProps": { "defaultChecked": true }
+            "inputProps": { "defaultChecked": true },
+            "default": true
           }
         ]
       }
@@ -322,8 +336,8 @@
           "--theme-node-background-color": "#ebd2a4",
           "--theme-node-title-color": "#d6a54b"
         },
-        "inputs": [{ "name": "in", "label": "in" }],
-        "outputs": [{ "name": "out", "label": "out" }]
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }]
       }
     }
   ]

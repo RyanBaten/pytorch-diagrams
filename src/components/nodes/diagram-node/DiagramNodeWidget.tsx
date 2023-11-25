@@ -53,7 +53,9 @@ export class DiagramNodeWidget extends React.Component<DiagramNodeWidgetProps, D
             onChange={(event) => this.props.node.setProperty(property.name, event)}
             onFocus={() => this.props.node.setLocked(true)}
             onBlur={() => this.props.node.setLocked(false)}
-            defaultValue={this.props.node.getProperty(property.name)}
+            defaultValue={
+              this.props.node.getProperty(property.name) ? this.props.node.getProperty(property.name) : property.default
+            }
           />
         </div>
       ));
