@@ -1,6 +1,7 @@
 import * as React from "react";
 import { DiagramEngine, PortWidget } from "@projectstorm/react-diagrams";
-import { ValueNodeModel, RightAnglePortModel } from "./ValueNodeModel";
+import { ValueNodeModel } from "./ValueNodeModel";
+import { RightAnglePortModel } from "@components/right-angle-port/RightAnglePortModel";
 import "./ValueNodeModel.css";
 
 export interface ValueNodeWidgetProps {
@@ -10,42 +11,35 @@ export interface ValueNodeWidgetProps {
 
 export interface ValueNodeWidgetState {}
 
-export class ValueNodeWidget extends React.Component<
-  ValueNodeWidgetProps,
-  ValueNodeWidgetState
-> {
+export class ValueNodeWidget extends React.Component<ValueNodeWidgetProps, ValueNodeWidgetState> {
   constructor(props: ValueNodeWidgetProps) {
     super(props);
     this.state = {};
   }
 
   render() {
-    const input_ports = this.props.node
-      .getInPorts()
-      .map((port: RightAnglePortModel) => (
-        <div className="value-labeled-port" key={port.getName()}>
-          <PortWidget
-            className="value-node-port"
-            engine={this.props.engine}
-            port={port}
-            style={this.props.node.getPortStyle()}
-          />
-          <div>{port.getOptions().label}</div>
-        </div>
-      ));
-    const output_ports = this.props.node
-      .getOutPorts()
-      .map((port: RightAnglePortModel) => (
-        <div className="value-labeled-port" key={port.getName()}>
-          <div>{port.getOptions().label}</div>
-          <PortWidget
-            className="value-node-port"
-            engine={this.props.engine}
-            port={port}
-            style={this.props.node.getPortStyle()}
-          />
-        </div>
-      ));
+    const input_ports = this.props.node.getInPorts().map((port: RightAnglePortModel) => (
+      <div className="value-labeled-port" key={port.getName()}>
+        <PortWidget
+          className="value-node-port"
+          engine={this.props.engine}
+          port={port}
+          style={this.props.node.getPortStyle()}
+        />
+        <div>{port.getOptions().label}</div>
+      </div>
+    ));
+    const output_ports = this.props.node.getOutPorts().map((port: RightAnglePortModel) => (
+      <div className="value-labeled-port" key={port.getName()}>
+        <div>{port.getOptions().label}</div>
+        <PortWidget
+          className="value-node-port"
+          engine={this.props.engine}
+          port={port}
+          style={this.props.node.getPortStyle()}
+        />
+      </div>
+    ));
     return (
       <div className="value-node" style={this.props.node.getStyle()}>
         <div
