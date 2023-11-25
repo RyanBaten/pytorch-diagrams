@@ -145,6 +145,8 @@ export class DiagramTorchCompiler {
               let value: any;
               if ("value" in property) {
                 value = property["value"];
+              } else if ("default" in property) {
+                value = property["default"];
               } else {
                 value = parameter["default"];
               }

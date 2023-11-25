@@ -13,6 +13,7 @@ export interface DiagramNodeProperty {
   inputProps?: Object;
   inputStyle?: Object;
   value?: any;
+  default?: any;
 }
 
 interface DiagramNodeOptions {
