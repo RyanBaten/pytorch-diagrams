@@ -117,6 +117,11 @@ export class DiagramNodeModel extends DefaultNodeModel {
     this.name = event.data.name;
     this.style = event.data.style;
     this.portStyle = event.data.portStyle;
-    this.properties = event.data.properties;
+    this.properties = event.data.properties.map((property) => {
+      if (property["type"] === "checkbox" && "value" in property) {
+        property["inputProps"]["defaultChecked"] = property["value"];
+      }
+      return property;
+    });
   }
 }
