@@ -9,7 +9,7 @@ import { ValueNodeModel } from "@components/nodes/value-node/ValueNodeModel";
 import { ValueNodeFactory } from "@components/nodes/value-node/ValueNodeFactory";
 import RightAnglePortFactory from "@components/right-angle-port/RightAnglePortFactory";
 
-import * as nodeDefinitions from "@config/node_definitions.json";
+import * as NodeConfigItems from "@config/NodeConfig.json";
 
 interface DiagramContainerProps {
   engine: DiagramEngine;
@@ -23,7 +23,7 @@ export default function DiagramContainer(props: DiagramContainerProps) {
   props.engine.getPortFactories().registerFactory(new RightAnglePortFactory());
 
   const createNode = (name) => {
-    const nodeConfig = nodeDefinitions["node_definitions"].find((node) => node.name == name);
+    const nodeConfig = NodeConfigItems.node_definitions.find((node) => node.name == name);
     if (!nodeConfig) return;
     const typeMap = {
       icon: IconNodeModel,
