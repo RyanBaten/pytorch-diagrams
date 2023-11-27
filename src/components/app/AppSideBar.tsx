@@ -1,17 +1,17 @@
 import SideBar from "@components/sidebar/SideBar";
 import SideBarAccordion from "@components/sidebar/SideBarAccordion";
 import SideBarWidget from "@components/sidebar/SideBarWidget";
-import { ConfigNodeDefinition } from "@config/node_definitions";
+import { NodeConfig } from "@config/NodeConfig";
 
-import * as nodeDefinitions from "@config/node_definitions.json";
+import * as NodeConfigItems from "@config/NodeConfig.json";
 
 export default function AppSideBar() {
-  const sideBarItems = nodeDefinitions["node_menus"].map((menuName: string) => {
+  const sideBarItems = NodeConfigItems.node_menus.map((menuName: string) => {
     return (
       <SideBarAccordion title={menuName} key={menuName} open={menuName === "common"}>
-        {nodeDefinitions["node_definitions"].map((nodeDefinition: ConfigNodeDefinition) => {
+        {NodeConfigItems.node_definitions.map((nodeDefinition: NodeConfig) => {
           return (
-            nodeDefinition["menus"].includes(menuName) && (
+            nodeDefinition.menus.includes(menuName) && (
               <SideBarWidget name={nodeDefinition.name} key={nodeDefinition.name}>
                 {nodeDefinition.name}
               </SideBarWidget>
