@@ -164,6 +164,44 @@
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
+  "LayerNorm": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["LayerNorm"] },
+    "init": {
+      "module_name": "LayerNorm",
+      "parameters": [
+        {
+          "name": "normalized_shape",
+          "node_property": "normalized_shape",
+          "keyword": false,
+          "default": 512
+        },
+        {
+          "name": "eps",
+          "node_property": "eps",
+          "keyword": true,
+          "default": "1e-5"
+        },
+        {
+          "name": "elementwise_affine",
+          "node_property": "elementwise_affine",
+          "keyword": true,
+          "default": true
+        },
+        {
+          "name": "bias",
+          "node_property": "bias",
+          "keyword": true,
+          "default": true
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
   "Linear": {
     "imports": [],
     "from_imports": { "torch.nn": ["Linear"] },
@@ -196,11 +234,69 @@
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
+  "LeakyReLU": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["LeakyReLU"] },
+    "init": {
+      "module_name": "LeakyReLU",
+      "parameters": [
+        {
+          "name": "negative_slope",
+          "node_property": "negative_slope",
+          "keyword": true,
+          "default": 0.01
+        },
+        {
+          "name": "inplace",
+          "node_property": "inplace",
+          "keyword": true,
+          "default": false
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
   "ReLU": {
     "imports": [],
     "from_imports": { "torch.nn": ["ReLU"] },
     "init": {
-      "module_name": "ReLU"
+      "module_name": "ReLU",
+      "parameters": [
+        {
+          "name": "inplace",
+          "node_property": "inplace",
+          "keyword": true,
+          "default": false
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "Sigmoid": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["Sigmoid"] },
+    "init": {
+      "module_name": "Sigmoid"
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "Tanh": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["Tanh"] },
+    "init": {
+      "module_name": "Tanh"
     },
     "forward": {
       "name": "TBD",

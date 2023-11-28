@@ -292,6 +292,49 @@
       }
     },
     {
+      "name": "LayerNorm",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "normalized_shape",
+            "label": "shape",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "eps",
+            "label": "eps",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "1e-5"
+          },
+          {
+            "name": "elementwise_affine",
+            "label": "elementwise_affine",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          },
+          {
+            "name": "bias",
+            "label": "bias",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          }
+        ]
+      }
+    },
+    {
       "name": "Linear",
       "type": "diagram",
       "menus": ["layers"],
@@ -328,7 +371,71 @@
       }
     },
     {
+      "name": "LeakyReLU",
+      "type": "diagram",
+      "menus": ["activations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#ebd2a4",
+          "--theme-node-title-color": "#d6a54b"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "negative_slope",
+            "label": "slope",
+            "type": "string",
+            "inputStyle": { "width": "32px" },
+            "default": 0.01
+          },
+          {
+            "name": "inplace",
+            "label": "inplace",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          }
+        ]
+      }
+    },
+    {
       "name": "ReLU",
+      "type": "diagram",
+      "menus": ["activations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#ebd2a4",
+          "--theme-node-title-color": "#d6a54b"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "inplace",
+            "label": "inplace",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Sigmoid",
+      "type": "diagram",
+      "menus": ["activations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#ebd2a4",
+          "--theme-node-title-color": "#d6a54b"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }]
+      }
+    },
+    {
+      "name": "Tanh",
       "type": "diagram",
       "menus": ["activations"],
       "definition": {

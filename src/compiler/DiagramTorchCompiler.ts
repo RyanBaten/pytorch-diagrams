@@ -182,7 +182,7 @@ export class DiagramTorchCompiler {
           .map((inp) => {
             let value;
             if (inp.node_input) value = linkedValueNameMap[inp.node_input];
-            if (inp.property) value = properties[inp.property].value;
+            else if (inp.property) value = properties[inp.property].value;
             return inp.keyword ? `${inp.name}=${value}` : `${value}`;
           })
           .join(", ");
