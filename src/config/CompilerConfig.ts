@@ -35,6 +35,7 @@ export interface CompilerConfigForwardInput {
   name: string;
   node_input?: string;
   property?: string;
+  default?: any;
   keyword: boolean;
 }
 

@@ -65,8 +65,89 @@
       "name": "torch.sub",
       "forward_in": [
         { "name": "input", "node_input": "in1", "keyword": false },
-        { "name": "input", "node_input": "in2", "keyword": false }
+        { "name": "input2", "node_input": "in2", "keyword": false }
       ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "zeros": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.zeros",
+      "forward_in": [
+        { "name": "size", "property": "size", "keyword": false, "default": "1,512" },
+        { "name": "dtype", "property": "dtype", "keyword": true, "default": "torch.float32" },
+        { "name": "layout", "property": "layout", "keyword": true, "default": "torch.strided" },
+        { "name": "requires_grad", "property": "requires_grad", "keyword": true, "default": false }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "Conv1d": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["Conv1d"] },
+    "init": {
+      "module_name": "Conv1d",
+      "parameters": [
+        {
+          "name": "in_channels",
+          "node_property": "in_channels",
+          "keyword": false,
+          "default": 16
+        },
+        {
+          "name": "out_channels",
+          "node_property": "out_channels",
+          "keyword": false,
+          "default": 16
+        },
+        {
+          "name": "kernel_size",
+          "node_property": "kernel_size",
+          "keyword": false,
+          "default": 3
+        },
+        {
+          "name": "stride",
+          "node_property": "stride",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "padding",
+          "node_property": "padding",
+          "keyword": true,
+          "default": 0
+        },
+        {
+          "name": "dilation",
+          "node_property": "dilation",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "groups",
+          "node_property": "groups",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "bias",
+          "node_property": "bias",
+          "keyword": true,
+          "default": true
+        },
+        {
+          "name": "padding_mode",
+          "node_property": "padding_mode",
+          "keyword": true,
+          "default": "'zeros'"
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
@@ -75,6 +156,74 @@
     "from_imports": { "torch.nn": ["Conv2d"] },
     "init": {
       "module_name": "Conv2d",
+      "parameters": [
+        {
+          "name": "in_channels",
+          "node_property": "in_channels",
+          "keyword": false,
+          "default": 16
+        },
+        {
+          "name": "out_channels",
+          "node_property": "out_channels",
+          "keyword": false,
+          "default": 16
+        },
+        {
+          "name": "kernel_size",
+          "node_property": "kernel_size",
+          "keyword": false,
+          "default": 3
+        },
+        {
+          "name": "stride",
+          "node_property": "stride",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "padding",
+          "node_property": "padding",
+          "keyword": true,
+          "default": 0
+        },
+        {
+          "name": "dilation",
+          "node_property": "dilation",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "groups",
+          "node_property": "groups",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "bias",
+          "node_property": "bias",
+          "keyword": true,
+          "default": true
+        },
+        {
+          "name": "padding_mode",
+          "node_property": "padding_mode",
+          "keyword": true,
+          "default": "'zeros'"
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "Conv3d": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["Conv3d"] },
+    "init": {
+      "module_name": "Conv3d",
       "parameters": [
         {
           "name": "in_channels",
@@ -232,6 +381,74 @@
       "name": "TBD",
       "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
       "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "RNN": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["RNN"] },
+    "init": {
+      "module_name": "RNN",
+      "parameters": [
+        {
+          "name": "input_size",
+          "node_property": "input_size",
+          "keyword": false,
+          "default": 512
+        },
+        {
+          "name": "hidden_size",
+          "node_property": "hidden_size",
+          "keyword": false,
+          "default": 512
+        },
+        {
+          "name": "num_layers",
+          "node_property": "num_layers",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "nonlinearity",
+          "node_property": "nonlinearity",
+          "keyword": true,
+          "default": "'tanh'"
+        },
+        {
+          "name": "bias",
+          "node_property": "bias",
+          "keyword": true,
+          "default": true
+        },
+        {
+          "name": "batch_first",
+          "node_property": "batch_first",
+          "keyword": true,
+          "default": false
+        },
+        {
+          "name": "dropout",
+          "node_property": "dropout",
+          "keyword": true,
+          "default": 0.0
+        },
+        {
+          "name": "bidirectional",
+          "node_property": "bidirectional",
+          "keyword": true,
+          "default": false
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [
+        { "name": "input", "node_input": "in", "keyword": false },
+        { "name": "h_0", "node_input": "h_0", "keyword": false }
+      ],
+      "forward_out": [
+        { "name": "output", "node_output": "out" },
+        { "name": "output", "node_output": "h_n" }
+      ]
     }
   },
   "LeakyReLU": {

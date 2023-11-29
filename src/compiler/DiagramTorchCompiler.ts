@@ -154,9 +154,9 @@ export class DiagramTorchCompiler {
             ?.map((parameter) => {
               const property = properties[parameter.node_property];
               let value: any;
-              if (property.value) {
+              if (property.value !== undefined) {
                 value = property.value;
-              } else if (property.default) {
+              } else if (property.default !== undefined) {
                 value = property.default;
               } else {
                 value = parameter.default;
@@ -182,7 +182,11 @@ export class DiagramTorchCompiler {
           .map((inp) => {
             let value;
             if (inp.node_input) value = linkedValueNameMap[inp.node_input];
-            else if (inp.property) value = properties[inp.property].value;
+            if (inp.property) {
+              value = properties[inp.property].value
+                ? this._convertToPythonValue(properties[inp.property].value)
+                : this._convertToPythonValue(properties[inp.property].default);
+            }
             return inp.keyword ? `${inp.name}=${value}` : `${value}`;
           })
           .join(", ");
