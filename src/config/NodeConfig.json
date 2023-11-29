@@ -1,5 +1,5 @@
 {
-  "node_menus": ["common", "operations", "layers", "activations"],
+  "node_menus": ["common", "operations", "creation ops", "layers", "activations"],
   "node_definitions": [
     {
       "name": "Start",
@@ -185,7 +185,210 @@
       }
     },
     {
+      "name": "zeros",
+      "type": "diagram",
+      "menus": ["creation ops"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#b793db",
+          "--theme-node-title-color": "#8568a1"
+        },
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ],
+        "properties": [
+          {
+            "name": "size",
+            "label": "size",
+            "type": "string",
+            "inputStyle": { "width": "96px" },
+            "default": "1,512"
+          },
+          {
+            "name": "dtype",
+            "label": "dtype",
+            "type": "string",
+            "inputStyle": { "width": "72px" },
+            "default": "torch.float32"
+          },
+          {
+            "name": "layout",
+            "label": "layout",
+            "type": "string",
+            "inputStyle": { "width": "72px" },
+            "default": "torch.strided"
+          },
+          {
+            "name": "requires_grad",
+            "label": "requires_grad",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "Conv1d",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "in_channels",
+            "label": "in_ch",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 16
+          },
+          {
+            "name": "out_channels",
+            "label": "out_ch",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 16
+          },
+          {
+            "name": "kernel_size",
+            "label": "kernel",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 3
+          },
+          {
+            "name": "stride",
+            "label": "stride",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "padding",
+            "label": "padding",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 0
+          },
+          {
+            "name": "dilation",
+            "label": "dilation",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "groups",
+            "label": "groups",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "bias",
+            "label": "bias",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          },
+          {
+            "name": "padding_mode",
+            "label": "pad_mode",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "'zeros'"
+          }
+        ]
+      }
+    },
+    {
       "name": "Conv2d",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "in_channels",
+            "label": "in_ch",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 16
+          },
+          {
+            "name": "out_channels",
+            "label": "out_ch",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 16
+          },
+          {
+            "name": "kernel_size",
+            "label": "kernel",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 3
+          },
+          {
+            "name": "stride",
+            "label": "stride",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "padding",
+            "label": "padding",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 0
+          },
+          {
+            "name": "dilation",
+            "label": "dilation",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "groups",
+            "label": "groups",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "bias",
+            "label": "bias",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          },
+          {
+            "name": "padding_mode",
+            "label": "pad_mode",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "'zeros'"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Conv3d",
       "type": "diagram",
       "menus": ["layers"],
       "definition": {
@@ -366,6 +569,83 @@
             "type": "checkbox",
             "inputProps": { "defaultChecked": true },
             "default": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "RNN",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [
+          { "name": "in", "label": "inp" },
+          { "name": "h_0", "label": "h_0" }
+        ],
+        "outputs": [
+          { "name": "out", "label": "out" },
+          { "name": "h_n", "label": "h_n" }
+        ],
+        "properties": [
+          {
+            "name": "input_size",
+            "label": "input_size",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "hidden_size",
+            "label": "hidden_size",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "num_layers",
+            "label": "layers",
+            "type": "string",
+            "inputStyle": { "width": "32px" },
+            "default": 1
+          },
+          {
+            "name": "nonlinearity",
+            "label": "nonlinearity",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "'tanh'"
+          },
+          {
+            "name": "bias",
+            "label": "bias",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          },
+          {
+            "name": "batch_first",
+            "label": "batch_first",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          },
+          {
+            "name": "dropout",
+            "label": "dropout",
+            "type": "string",
+            "inputStyle": { "width": "32px" },
+            "default": 0.0
+          },
+          {
+            "name": "bidirectional",
+            "label": "bidirectional",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
           }
         ]
       }
