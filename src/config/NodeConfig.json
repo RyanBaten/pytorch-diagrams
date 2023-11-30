@@ -185,6 +185,161 @@
       }
     },
     {
+      "name": "eye",
+      "type": "diagram",
+      "menus": ["creation ops"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#b793db",
+          "--theme-node-title-color": "#8568a1"
+        },
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ],
+        "properties": [
+          {
+            "name": "n",
+            "label": "n_rows",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "m",
+            "label": "n_cols",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "None"
+          },
+          {
+            "name": "dtype",
+            "label": "dtype",
+            "type": "string",
+            "inputStyle": { "width": "96px" },
+            "default": "torch.float32"
+          },
+          {
+            "name": "layout",
+            "label": "layout",
+            "type": "string",
+            "inputStyle": { "width": "96px" },
+            "default": "torch.strided"
+          },
+          {
+            "name": "requires_grad",
+            "label": "requires_grad",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "full",
+      "type": "diagram",
+      "menus": ["creation ops"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#b793db",
+          "--theme-node-title-color": "#8568a1"
+        },
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ],
+        "properties": [
+          {
+            "name": "size",
+            "label": "size",
+            "type": "string",
+            "inputStyle": { "width": "96px" },
+            "default": "(1,512)"
+          },
+          {
+            "name": "fill_value",
+            "label": "fill_value",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 1
+          },
+          {
+            "name": "dtype",
+            "label": "dtype",
+            "type": "string",
+            "inputStyle": { "width": "96px" },
+            "default": "torch.float32"
+          },
+          {
+            "name": "layout",
+            "label": "layout",
+            "type": "string",
+            "inputStyle": { "width": "96px" },
+            "default": "torch.strided"
+          },
+          {
+            "name": "requires_grad",
+            "label": "requires_grad",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "ones",
+      "type": "diagram",
+      "menus": ["creation ops"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#b793db",
+          "--theme-node-title-color": "#8568a1"
+        },
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ],
+        "properties": [
+          {
+            "name": "size",
+            "label": "size",
+            "type": "string",
+            "inputStyle": { "width": "96px" },
+            "default": "1,512"
+          },
+          {
+            "name": "dtype",
+            "label": "dtype",
+            "type": "string",
+            "inputStyle": { "width": "96px" },
+            "default": "torch.float32"
+          },
+          {
+            "name": "layout",
+            "label": "layout",
+            "type": "string",
+            "inputStyle": { "width": "96px" },
+            "default": "torch.strided"
+          },
+          {
+            "name": "requires_grad",
+            "label": "requires_grad",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          }
+        ]
+      }
+    },
+    {
       "name": "zeros",
       "type": "diagram",
       "menus": ["creation ops"],
@@ -211,14 +366,14 @@
             "name": "dtype",
             "label": "dtype",
             "type": "string",
-            "inputStyle": { "width": "72px" },
+            "inputStyle": { "width": "96px" },
             "default": "torch.float32"
           },
           {
             "name": "layout",
             "label": "layout",
             "type": "string",
-            "inputStyle": { "width": "72px" },
+            "inputStyle": { "width": "96px" },
             "default": "torch.strided"
           },
           {
@@ -569,6 +724,83 @@
             "type": "checkbox",
             "inputProps": { "defaultChecked": true },
             "default": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "LSTM",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [
+          { "name": "in", "label": "inp" },
+          { "name": "(h_0, c_0)", "label": "(h_0, c_0)" }
+        ],
+        "outputs": [
+          { "name": "out", "label": "out" },
+          { "name": "(h_n, c_n)", "label": "(h_n, c_n)" }
+        ],
+        "properties": [
+          {
+            "name": "input_size",
+            "label": "input_size",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "hidden_size",
+            "label": "hidden_size",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "num_layers",
+            "label": "layers",
+            "type": "string",
+            "inputStyle": { "width": "32px" },
+            "default": 1
+          },
+          {
+            "name": "bias",
+            "label": "bias",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          },
+          {
+            "name": "batch_first",
+            "label": "batch_first",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          },
+          {
+            "name": "dropout",
+            "label": "dropout",
+            "type": "string",
+            "inputStyle": { "width": "32px" },
+            "default": 0.0
+          },
+          {
+            "name": "bidirectional",
+            "label": "bidirectional",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          },
+          {
+            "name": "proj_size",
+            "label": "proj_size",
+            "type": "string",
+            "inputStyle": { "width": "32px" },
+            "default": 0
           }
         ]
       }
