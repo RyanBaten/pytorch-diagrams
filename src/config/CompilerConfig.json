@@ -70,6 +70,47 @@
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
+  "eye": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.eye",
+      "forward_in": [
+        { "name": "n", "property": "n", "keyword": false, "default": 512 },
+        { "name": "m", "property": "m", "keyword": true, "default": "None" },
+        { "name": "dtype", "property": "dtype", "keyword": true, "default": "torch.float32" },
+        { "name": "layout", "property": "layout", "keyword": true, "default": "torch.strided" },
+        { "name": "requires_grad", "property": "requires_grad", "keyword": true, "default": false }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "full": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.full",
+      "forward_in": [
+        { "name": "size", "property": "size", "keyword": false, "default": "(1,512)" },
+        { "name": "fill_value", "property": "fill_value", "keyword": false, "default": 1 },
+        { "name": "dtype", "property": "dtype", "keyword": true, "default": "torch.float32" },
+        { "name": "layout", "property": "layout", "keyword": true, "default": "torch.strided" },
+        { "name": "requires_grad", "property": "requires_grad", "keyword": true, "default": false }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "ones": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.ones",
+      "forward_in": [
+        { "name": "size", "property": "size", "keyword": false, "default": "1,512" },
+        { "name": "dtype", "property": "dtype", "keyword": true, "default": "torch.float32" },
+        { "name": "layout", "property": "layout", "keyword": true, "default": "torch.strided" },
+        { "name": "requires_grad", "property": "requires_grad", "keyword": true, "default": false }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
   "zeros": {
     "imports": ["torch"],
     "forward": {
@@ -381,6 +422,74 @@
       "name": "TBD",
       "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
       "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "LSTM": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["LSTM"] },
+    "init": {
+      "module_name": "LSTM",
+      "parameters": [
+        {
+          "name": "input_size",
+          "node_property": "input_size",
+          "keyword": false,
+          "default": 512
+        },
+        {
+          "name": "hidden_size",
+          "node_property": "hidden_size",
+          "keyword": false,
+          "default": 512
+        },
+        {
+          "name": "num_layers",
+          "node_property": "num_layers",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "bias",
+          "node_property": "bias",
+          "keyword": true,
+          "default": true
+        },
+        {
+          "name": "batch_first",
+          "node_property": "batch_first",
+          "keyword": true,
+          "default": false
+        },
+        {
+          "name": "dropout",
+          "node_property": "dropout",
+          "keyword": true,
+          "default": 0.0
+        },
+        {
+          "name": "bidirectional",
+          "node_property": "bidirectional",
+          "keyword": true,
+          "default": false
+        },
+        {
+          "name": "proj_size",
+          "node_property": "proj_size",
+          "keyword": true,
+          "default": 0
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [
+        { "name": "input", "node_input": "in", "keyword": false },
+        { "name": "(h_0, c_0)", "node_input": "(h_0, c_0)", "keyword": false }
+      ],
+      "forward_out": [
+        { "name": "output", "node_output": "out" },
+        { "name": "output", "node_output": "(h_n, c_n)" }
+      ]
     }
   },
   "RNN": {
