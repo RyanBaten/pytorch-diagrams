@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   width: 100vw;
-  height: 54px;
+  height: var(--navbar-height);
   border-bottom: 2px var(--theme-ui-highlight-color) solid;
   background-color: var(--theme-ui-background-color);
 }
