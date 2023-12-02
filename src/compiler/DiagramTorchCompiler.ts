@@ -173,9 +173,13 @@ export class DiagramTorchCompiler {
       if (compilerNode.forward) {
         var parameters = "";
         const linkedValueNameMap = node.ports.reduce((obj, port) => {
-          const portLink = links[port.links[0]];
-          const linkedValueId = portLink.source === node.id ? portLink.target : portLink.source;
-          obj[port.name] = nodes[linkedValueId].name;
+          if (port.links.length > 0) {
+            const portLink = links[port.links[0]];
+            const linkedValueId = portLink.source === node.id ? portLink.target : portLink.source;
+            obj[port.name] = nodes[linkedValueId].name;
+          } else if (port.in) {
+            throw new Error(`node: "${node.name}" is missing an input.`);
+          }
           return obj;
         }, {});
         parameters = compilerNode.forward.forward_in
