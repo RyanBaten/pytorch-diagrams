@@ -10,6 +10,7 @@
   --theme-node-title-color: rgb(122, 122, 122);
   --theme-node-border-radius: 10px;
   --theme-node-title-radius: 10px;
+  --navbar-height: 54px;
 }
 
 .window {

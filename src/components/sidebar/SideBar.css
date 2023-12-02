@@ -2,8 +2,7 @@
   width: 15%;
   min-width: max-content;
   max-width: 200px;
-  height: 100%;
-  resize: horizontal;
+  height: calc(100% - var(--navbar-height));
   overflow-y: auto;
   background-color: var(--theme-ui-background-color);
   color: var(--theme-ui-font-color);
