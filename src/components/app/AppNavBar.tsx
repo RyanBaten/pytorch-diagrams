@@ -55,9 +55,15 @@ export default function AppNavBar(props: AppNavBarProps) {
 
   const torchCompiler = new DiagramTorchCompiler();
   const exportTorch = () => {
-    const blob = new Blob([torchCompiler.compile(documentTitle.getContent(), props.engine.getModel().serialize())], {
-      type: "text/plain",
-    });
+    let blob;
+    try {
+      blob = new Blob([torchCompiler.compile(documentTitle.getContent(), props.engine.getModel().serialize())], {
+        type: "text/plain",
+      });
+    } catch (e) {
+      alert(`${e.name}: ${e.message}`);
+      return;
+    }
     const href = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = href;
