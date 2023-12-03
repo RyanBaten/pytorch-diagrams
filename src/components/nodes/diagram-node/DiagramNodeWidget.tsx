@@ -19,7 +19,7 @@ export class DiagramNodeWidget extends React.Component<DiagramNodeWidgetProps, D
 
   render() {
     const input_ports = this.props.node.getInPorts().map((port: RightAnglePortModel) => (
-      <div className="diagram-labeled-port" key={port.getName()}>
+      <div className="diagram-labeled-input-port" key={port.getName()}>
         <PortWidget
           className="diagram-node-port"
           engine={this.props.engine}
@@ -30,7 +30,7 @@ export class DiagramNodeWidget extends React.Component<DiagramNodeWidgetProps, D
       </div>
     ));
     const output_ports = this.props.node.getOutPorts().map((port: RightAnglePortModel) => (
-      <div className="diagram-labeled-port" key={port.getName()}>
+      <div className="diagram-labeled-output-port" key={port.getName()}>
         <div>{port.getOptions().label}</div>
         <PortWidget
           className="diagram-node-port"
