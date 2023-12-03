@@ -492,6 +492,79 @@
       ]
     }
   },
+  "MultiheadAttention": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["MultiheadAttention"] },
+    "init": {
+      "module_name": "MultiheadAttention",
+      "parameters": [
+        {
+          "name": "embed_dim",
+          "node_property": "embed_dim",
+          "keyword": false,
+          "default": 512
+        },
+        {
+          "name": "num_heads",
+          "node_property": "num_heads",
+          "keyword": false,
+          "default": 8
+        },
+        {
+          "name": "dropout",
+          "node_property": "dropout",
+          "keyword": true,
+          "default": 0.0
+        },
+        {
+          "name": "bias",
+          "node_property": "bias",
+          "keyword": true,
+          "default": true
+        },
+        {
+          "name": "add_bias_kv",
+          "node_property": "add_bias_kv",
+          "keyword": true,
+          "default": false
+        },
+        {
+          "name": "add_zero_attn",
+          "node_property": "add_zero_attn",
+          "keyword": true,
+          "default": false
+        },
+        {
+          "name": "kdim",
+          "node_property": "kdim",
+          "keyword": true,
+          "default": 512
+        },
+        {
+          "name": "vdim",
+          "node_property": "vdim",
+          "keyword": true,
+          "default": 512
+        },
+        {
+          "name": "batch_first",
+          "node_property": "batch_first",
+          "keyword": true,
+          "default": false
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [
+        { "name": "query", "node_input": "query", "keyword": false },
+        { "name": "key", "node_input": "key", "keyword": false },
+        { "name": "value", "node_input": "value", "keyword": false },
+        { "name": "attn_mask", "node_input": "attn_mask", "keyword": true }
+      ],
+      "forward_out": [{ "name": "attn_output", "node_output": "attn_output" }]
+    }
+  },
   "RNN": {
     "imports": [],
     "from_imports": { "torch.nn": ["RNN"] },

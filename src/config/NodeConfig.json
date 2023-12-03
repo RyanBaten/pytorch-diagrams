@@ -806,6 +806,89 @@
       }
     },
     {
+      "name": "MultiheadAttention",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [
+          { "name": "query", "label": "query" },
+          { "name": "key", "label": "key" },
+          { "name": "value", "label": "value" },
+          { "name": "attn_mask", "label": "attn_mask" }
+        ],
+        "outputs": [{ "name": "attn_output", "label": "out" }],
+        "properties": [
+          {
+            "name": "embed_dim",
+            "label": "embed_dim",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "num_heads",
+            "label": "num_heads",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 8
+          },
+          {
+            "name": "dropout",
+            "label": "dropout",
+            "type": "string",
+            "inputStyle": { "width": "32px" },
+            "default": 0.0
+          },
+          {
+            "name": "bias",
+            "label": "bias",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          },
+          {
+            "name": "add_bias_kv",
+            "label": "add_bias_kv",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          },
+          {
+            "name": "add_zero_attn",
+            "label": "add_zero_attn",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          },
+          {
+            "name": "kdim",
+            "label": "kdim",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "vdim",
+            "label": "vdim",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "batch_first",
+            "label": "batch_first",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          }
+        ]
+      }
+    },
+    {
       "name": "RNN",
       "type": "diagram",
       "menus": ["layers"],
