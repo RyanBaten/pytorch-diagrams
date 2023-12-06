@@ -124,6 +124,138 @@
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
+  "BatchNorm1d": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["BatchNorm1d"] },
+    "init": {
+      "module_name": "BatchNorm1d",
+      "parameters": [
+        {
+          "name": "num_features",
+          "node_property": "num_features",
+          "keyword": false,
+          "default": 512
+        },
+        {
+          "name": "eps",
+          "node_property": "eps",
+          "keyword": true,
+          "default": "1e-5"
+        },
+        {
+          "name": "momentum",
+          "node_property": "momentum",
+          "keyword": true,
+          "default": 0.1
+        },
+        {
+          "name": "affine",
+          "node_property": "affine",
+          "keyword": true,
+          "default": true
+        },
+        {
+          "name": "track_running_stats",
+          "node_property": "track_running_stats",
+          "keyword": true,
+          "default": true
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "BatchNorm2d": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["BatchNorm2d"] },
+    "init": {
+      "module_name": "BatchNorm2d",
+      "parameters": [
+        {
+          "name": "num_features",
+          "node_property": "num_features",
+          "keyword": false,
+          "default": 512
+        },
+        {
+          "name": "eps",
+          "node_property": "eps",
+          "keyword": true,
+          "default": "1e-5"
+        },
+        {
+          "name": "momentum",
+          "node_property": "momentum",
+          "keyword": true,
+          "default": 0.1
+        },
+        {
+          "name": "affine",
+          "node_property": "affine",
+          "keyword": true,
+          "default": true
+        },
+        {
+          "name": "track_running_stats",
+          "node_property": "track_running_stats",
+          "keyword": true,
+          "default": true
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "BatchNorm3d": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["BatchNorm3d"] },
+    "init": {
+      "module_name": "BatchNorm3d",
+      "parameters": [
+        {
+          "name": "num_features",
+          "node_property": "num_features",
+          "keyword": false,
+          "default": 512
+        },
+        {
+          "name": "eps",
+          "node_property": "eps",
+          "keyword": true,
+          "default": "1e-5"
+        },
+        {
+          "name": "momentum",
+          "node_property": "momentum",
+          "keyword": true,
+          "default": 0.1
+        },
+        {
+          "name": "affine",
+          "node_property": "affine",
+          "keyword": true,
+          "default": true
+        },
+        {
+          "name": "track_running_stats",
+          "node_property": "track_running_stats",
+          "keyword": true,
+          "default": true
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
   "Conv1d": {
     "imports": [],
     "from_imports": { "torch.nn": ["Conv1d"] },
@@ -632,6 +764,71 @@
         { "name": "output", "node_output": "out" },
         { "name": "output", "node_output": "h_n" }
       ]
+    }
+  },
+  "TransformerEncoderLayer": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["TransformerEncoderLayer"] },
+    "init": {
+      "module_name": "TransformerEncoderLayer",
+      "parameters": [
+        {
+          "name": "d_model",
+          "node_property": "d_model",
+          "keyword": false,
+          "default": 512
+        },
+        {
+          "name": "nhead",
+          "node_property": "nhead",
+          "keyword": false,
+          "default": 8
+        },
+        {
+          "name": "dim_feedforward",
+          "node_property": "dim_feedforward",
+          "keyword": true,
+          "default": 512
+        },
+        {
+          "name": "dropout",
+          "node_property": "dropout",
+          "keyword": true,
+          "default": 0.1
+        },
+        {
+          "name": "layer_norm_eps",
+          "node_property": "layer_norm_eps",
+          "keyword": true,
+          "default": "1e-5"
+        },
+        {
+          "name": "batch_first",
+          "node_property": "batch_first",
+          "keyword": true,
+          "default": false
+        },
+        {
+          "name": "norm_first",
+          "node_property": "norm_first",
+          "keyword": true,
+          "default": false
+        },
+        {
+          "name": "bias",
+          "node_property": "bias",
+          "keyword": true,
+          "default": true
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [
+        { "name": "src", "node_input": "src", "keyword": false },
+        { "name": "src_mask", "node_input": "src_mask", "keyword": true }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
   "LeakyReLU": {
