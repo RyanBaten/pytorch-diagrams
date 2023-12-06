@@ -33,6 +33,7 @@ export interface CompilerConfigForward {
 
 export interface CompilerConfigForwardInput {
   name: string;
+  const?: boolean;
   node_input?: string;
   property?: string;
   default?: any;

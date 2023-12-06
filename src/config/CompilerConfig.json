@@ -560,7 +560,8 @@
         { "name": "query", "node_input": "query", "keyword": false },
         { "name": "key", "node_input": "key", "keyword": false },
         { "name": "value", "node_input": "value", "keyword": false },
-        { "name": "attn_mask", "node_input": "attn_mask", "keyword": true }
+        { "name": "attn_mask", "node_input": "attn_mask", "keyword": true },
+        { "name": "need_weights", "const": true, "default": false, "keyword": true }
       ],
       "forward_out": [{ "name": "attn_output", "node_output": "attn_output" }]
     }

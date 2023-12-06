@@ -191,6 +191,7 @@ export class DiagramTorchCompiler {
                 ? this._convertToPythonValue(properties[inp.property].value)
                 : this._convertToPythonValue(properties[inp.property].default);
             }
+            if (inp.const) value = this._convertToPythonValue(inp.default);
             return inp.keyword ? `${inp.name}=${value}` : `${value}`;
           })
           .join(", ");
