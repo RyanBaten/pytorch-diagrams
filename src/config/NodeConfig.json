@@ -387,6 +387,156 @@
       }
     },
     {
+      "name": "BatchNorm1d",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "num_features",
+            "label": "num_features",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "eps",
+            "label": "eps",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "1e-5"
+          },
+          {
+            "name": "momentum",
+            "label": "momentum",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 0.1
+          },
+          {
+            "name": "affine",
+            "label": "affine",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          },
+          {
+            "name": "track_running_stats",
+            "label": "track_running_stats",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "BatchNorm2d",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "num_features",
+            "label": "num_features",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "eps",
+            "label": "eps",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "1e-5"
+          },
+          {
+            "name": "momentum",
+            "label": "momentum",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 0.1
+          },
+          {
+            "name": "affine",
+            "label": "affine",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          },
+          {
+            "name": "track_running_stats",
+            "label": "track_running_stats",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "BatchNorm3d",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "num_features",
+            "label": "num_features",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "eps",
+            "label": "eps",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "1e-5"
+          },
+          {
+            "name": "momentum",
+            "label": "momentum",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 0.1
+          },
+          {
+            "name": "affine",
+            "label": "affine",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          },
+          {
+            "name": "track_running_stats",
+            "label": "track_running_stats",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          }
+        ]
+      }
+    },
+    {
       "name": "Conv1d",
       "type": "diagram",
       "menus": ["layers"],
@@ -961,6 +1111,80 @@
             "type": "checkbox",
             "inputProps": { "defaultChecked": false },
             "default": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "TransformerEncoderLayer",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [
+          { "name": "src", "label": "src" },
+          { "name": "src_mask", "label": "src_mask" }
+        ],
+        "outputs": [{ "name": "out", "label": "out" }],
+        "properties": [
+          {
+            "name": "d_model",
+            "label": "d_model",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "nhead",
+            "label": "nhead",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 8
+          },
+          {
+            "name": "dim_feedforward",
+            "label": "ff_dim",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "dropout",
+            "label": "dropout",
+            "type": "string",
+            "inputStyle": { "width": "32px" },
+            "default": 0.1
+          },
+          {
+            "name": "layer_norm_eps",
+            "label": "layer_norm_eps",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "1e-5"
+          },
+          {
+            "name": "batch_first",
+            "label": "batch_first",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          },
+          {
+            "name": "norm_first",
+            "label": "norm_first",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          },
+          {
+            "name": "bias",
+            "label": "bias",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
           }
         ]
       }
