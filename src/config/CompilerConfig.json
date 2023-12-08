@@ -460,6 +460,228 @@
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
+  "ConvTranspose1d": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["ConvTranspose1d"] },
+    "init": {
+      "module_name": "ConvTranspose1d",
+      "parameters": [
+        {
+          "name": "in_channels",
+          "node_property": "in_channels",
+          "keyword": false,
+          "default": 16
+        },
+        {
+          "name": "out_channels",
+          "node_property": "out_channels",
+          "keyword": false,
+          "default": 16
+        },
+        {
+          "name": "kernel_size",
+          "node_property": "kernel_size",
+          "keyword": false,
+          "default": 3
+        },
+        {
+          "name": "stride",
+          "node_property": "stride",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "padding",
+          "node_property": "padding",
+          "keyword": true,
+          "default": 0
+        },
+        {
+          "name": "output_padding",
+          "node_property": "output_padding",
+          "keyword": true,
+          "default": 0
+        },
+        {
+          "name": "groups",
+          "node_property": "groups",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "bias",
+          "node_property": "bias",
+          "keyword": true,
+          "default": true
+        },
+        {
+          "name": "dilation",
+          "node_property": "dilation",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "padding_mode",
+          "node_property": "padding_mode",
+          "keyword": true,
+          "default": "'zeros'"
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "ConvTranspose2d": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["ConvTranspose2d"] },
+    "init": {
+      "module_name": "ConvTranspose2d",
+      "parameters": [
+        {
+          "name": "in_channels",
+          "node_property": "in_channels",
+          "keyword": false,
+          "default": 16
+        },
+        {
+          "name": "out_channels",
+          "node_property": "out_channels",
+          "keyword": false,
+          "default": 16
+        },
+        {
+          "name": "kernel_size",
+          "node_property": "kernel_size",
+          "keyword": false,
+          "default": 3
+        },
+        {
+          "name": "stride",
+          "node_property": "stride",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "padding",
+          "node_property": "padding",
+          "keyword": true,
+          "default": 0
+        },
+        {
+          "name": "output_padding",
+          "node_property": "output_padding",
+          "keyword": true,
+          "default": 0
+        },
+        {
+          "name": "groups",
+          "node_property": "groups",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "bias",
+          "node_property": "bias",
+          "keyword": true,
+          "default": true
+        },
+        {
+          "name": "dilation",
+          "node_property": "dilation",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "padding_mode",
+          "node_property": "padding_mode",
+          "keyword": true,
+          "default": "'zeros'"
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "ConvTranspose3d": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["ConvTranspose3d"] },
+    "init": {
+      "module_name": "ConvTranspose3d",
+      "parameters": [
+        {
+          "name": "in_channels",
+          "node_property": "in_channels",
+          "keyword": false,
+          "default": 16
+        },
+        {
+          "name": "out_channels",
+          "node_property": "out_channels",
+          "keyword": false,
+          "default": 16
+        },
+        {
+          "name": "kernel_size",
+          "node_property": "kernel_size",
+          "keyword": false,
+          "default": 3
+        },
+        {
+          "name": "stride",
+          "node_property": "stride",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "padding",
+          "node_property": "padding",
+          "keyword": true,
+          "default": 0
+        },
+        {
+          "name": "output_padding",
+          "node_property": "output_padding",
+          "keyword": true,
+          "default": 0
+        },
+        {
+          "name": "groups",
+          "node_property": "groups",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "bias",
+          "node_property": "bias",
+          "keyword": true,
+          "default": true
+        },
+        {
+          "name": "dilation",
+          "node_property": "dilation",
+          "keyword": true,
+          "default": 1
+        },
+        {
+          "name": "padding_mode",
+          "node_property": "padding_mode",
+          "keyword": true,
+          "default": "'zeros'"
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
   "Dropout": {
     "imports": [],
     "from_imports": { "torch.nn": ["Dropout"] },
@@ -766,6 +988,71 @@
       ]
     }
   },
+  "TransformerDecoderLayer": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["TransformerDecoderLayer"] },
+    "init": {
+      "module_name": "TransformerDecoderLayer",
+      "parameters": [
+        {
+          "name": "d_model",
+          "node_property": "d_model",
+          "keyword": false,
+          "default": 512
+        },
+        {
+          "name": "nhead",
+          "node_property": "nhead",
+          "keyword": false,
+          "default": 8
+        },
+        {
+          "name": "dim_feedforward",
+          "node_property": "dim_feedforward",
+          "keyword": true,
+          "default": 512
+        },
+        {
+          "name": "dropout",
+          "node_property": "dropout",
+          "keyword": true,
+          "default": 0.1
+        },
+        {
+          "name": "layer_norm_eps",
+          "node_property": "layer_norm_eps",
+          "keyword": true,
+          "default": "1e-5"
+        },
+        {
+          "name": "batch_first",
+          "node_property": "batch_first",
+          "keyword": true,
+          "default": false
+        },
+        {
+          "name": "norm_first",
+          "node_property": "norm_first",
+          "keyword": true,
+          "default": false
+        },
+        {
+          "name": "bias",
+          "node_property": "bias",
+          "keyword": true,
+          "default": true
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [
+        { "name": "tgt", "node_input": "tgt", "keyword": false },
+        { "name": "tgt_mask", "node_input": "tgt_mask", "keyword": true }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
   "TransformerEncoderLayer": {
     "imports": [],
     "from_imports": { "torch.nn": ["TransformerEncoderLayer"] },
@@ -828,6 +1115,26 @@
         { "name": "src", "node_input": "src", "keyword": false },
         { "name": "src_mask", "node_input": "src_mask", "keyword": true }
       ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "GELU": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["GELU"] },
+    "init": {
+      "module_name": "GELU",
+      "parameters": [
+        {
+          "name": "approximate",
+          "node_property": "approximate",
+          "keyword": true,
+          "default": "'none'"
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },

@@ -771,6 +771,261 @@
       }
     },
     {
+      "name": "ConvTranspose1d",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "in_channels",
+            "label": "in_ch",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 16
+          },
+          {
+            "name": "out_channels",
+            "label": "out_ch",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 16
+          },
+          {
+            "name": "kernel_size",
+            "label": "kernel",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 3
+          },
+          {
+            "name": "stride",
+            "label": "stride",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "padding",
+            "label": "padding",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 0
+          },
+          {
+            "name": "output_padding",
+            "label": "output_padding",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 0
+          },
+          {
+            "name": "groups",
+            "label": "groups",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "bias",
+            "label": "bias",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          },
+          {
+            "name": "dilation",
+            "label": "dilation",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "padding_mode",
+            "label": "pad_mode",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "'zeros'"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ConvTranspose2d",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "in_channels",
+            "label": "in_ch",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 16
+          },
+          {
+            "name": "out_channels",
+            "label": "out_ch",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 16
+          },
+          {
+            "name": "kernel_size",
+            "label": "kernel",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 3
+          },
+          {
+            "name": "stride",
+            "label": "stride",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "padding",
+            "label": "padding",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 0
+          },
+          {
+            "name": "output_padding",
+            "label": "output_padding",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 0
+          },
+          {
+            "name": "groups",
+            "label": "groups",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "bias",
+            "label": "bias",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          },
+          {
+            "name": "dilation",
+            "label": "dilation",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "padding_mode",
+            "label": "pad_mode",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "'zeros'"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ConvTranspose3d",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "in_channels",
+            "label": "in_ch",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 16
+          },
+          {
+            "name": "out_channels",
+            "label": "out_ch",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 16
+          },
+          {
+            "name": "kernel_size",
+            "label": "kernel",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 3
+          },
+          {
+            "name": "stride",
+            "label": "stride",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "padding",
+            "label": "padding",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 0
+          },
+          {
+            "name": "output_padding",
+            "label": "output_padding",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 0
+          },
+          {
+            "name": "groups",
+            "label": "groups",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "bias",
+            "label": "bias",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          },
+          {
+            "name": "dilation",
+            "label": "dilation",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 1
+          },
+          {
+            "name": "padding_mode",
+            "label": "pad_mode",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "'zeros'"
+          }
+        ]
+      }
+    },
+    {
       "name": "Dropout",
       "type": "diagram",
       "menus": ["layers"],
@@ -1116,6 +1371,80 @@
       }
     },
     {
+      "name": "TransformerDecoderLayer",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [
+          { "name": "tgt", "label": "tgt" },
+          { "name": "tgt_mask", "label": "tgt_mask" }
+        ],
+        "outputs": [{ "name": "out", "label": "out" }],
+        "properties": [
+          {
+            "name": "d_model",
+            "label": "d_model",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "nhead",
+            "label": "nhead",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 8
+          },
+          {
+            "name": "dim_feedforward",
+            "label": "ff_dim",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "dropout",
+            "label": "dropout",
+            "type": "string",
+            "inputStyle": { "width": "32px" },
+            "default": 0.1
+          },
+          {
+            "name": "layer_norm_eps",
+            "label": "layer_norm_eps",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "1e-5"
+          },
+          {
+            "name": "batch_first",
+            "label": "batch_first",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          },
+          {
+            "name": "norm_first",
+            "label": "norm_first",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          },
+          {
+            "name": "bias",
+            "label": "bias",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": true },
+            "default": true
+          }
+        ]
+      }
+    },
+    {
       "name": "TransformerEncoderLayer",
       "type": "diagram",
       "menus": ["layers"],
@@ -1185,6 +1514,28 @@
             "type": "checkbox",
             "inputProps": { "defaultChecked": true },
             "default": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "GELU",
+      "type": "diagram",
+      "menus": ["activations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#ebd2a4",
+          "--theme-node-title-color": "#d6a54b"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "approximate",
+            "label": "approximate",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "'none'"
           }
         ]
       }
