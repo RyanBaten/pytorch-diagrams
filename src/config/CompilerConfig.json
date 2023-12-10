@@ -1,4 +1,11 @@
 {
+  "Const": {
+    "forward": {
+      "name": "Const",
+      "forward_in": [{ "name": "input", "property": "value", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
   "add": {
     "imports": ["torch"],
     "forward": {

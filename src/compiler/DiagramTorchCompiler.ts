@@ -200,7 +200,11 @@ export class DiagramTorchCompiler {
             topoValueNames.has(linkedValueNameMap[out.node_output]) ? linkedValueNameMap[out.node_output] : "_"
           )
           .join(", ");
-        forward.push(`${outputs} = ${compilerNode.forward.name}(${parameters})`);
+        if (node.name == "Const") {
+          forward.push(`${outputs} = ${parameters}`);
+        } else {
+          forward.push(`${outputs} = ${compilerNode.forward.name}(${parameters})`);
+        }
       }
     }
     const forwardArgs = this._getAdjacentValues("Start", topo, nodes, links)
