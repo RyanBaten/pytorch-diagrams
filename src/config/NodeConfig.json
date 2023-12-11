@@ -1075,6 +1075,63 @@
       }
     },
     {
+      "name": "Embedding",
+      "type": "diagram",
+      "menus": ["layers"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#7aa5f5",
+          "--theme-node-title-color": "#5980c9"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "num_embeddings",
+            "label": "num_embeddings",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 30000
+          },
+          {
+            "name": "embedding_dim",
+            "label": "embedding_dim",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "padding_idx",
+            "label": "padding_idx",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "None"
+          },
+          {
+            "name": "max_norm",
+            "label": "max_norm",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "None"
+          },
+          {
+            "name": "norm_type",
+            "label": "norm_type",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 2.0
+          },
+          {
+            "name": "scale_grad_by_freq",
+            "label": "scale_grad_by_freq",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          }
+        ]
+      }
+    },
+    {
       "name": "LayerNorm",
       "type": "diagram",
       "menus": ["layers"],

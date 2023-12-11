@@ -715,6 +715,56 @@
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
+  "Embedding": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["Embedding"] },
+    "init": {
+      "module_name": "Embedding",
+      "parameters": [
+        {
+          "name": "num_embeddings",
+          "node_property": "num_embeddings",
+          "keyword": false,
+          "default": 30000
+        },
+        {
+          "name": "embedding_dim",
+          "node_property": "embedding_dim",
+          "keyword": false,
+          "default": 512
+        },
+        {
+          "name": "padding_idx",
+          "node_property": "padding_idx",
+          "keyword": true,
+          "default": "None"
+        },
+        {
+          "name": "max_norm",
+          "node_property": "max_norm",
+          "keyword": true,
+          "default": "None"
+        },
+        {
+          "name": "norm_type",
+          "node_property": "norm_type",
+          "keyword": true,
+          "default": 2.0
+        },
+        {
+          "name": "scale_grad_by_freq",
+          "node_property": "scale_grad_by_freq",
+          "keyword": true,
+          "default": false
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
   "LayerNorm": {
     "imports": [],
     "from_imports": { "torch.nn": ["LayerNorm"] },
