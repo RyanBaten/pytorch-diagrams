@@ -1,5 +1,5 @@
 import * as compilerConfig from "@config/CompilerConfig.json";
-import { CompilerConfigItem } from "@config/CompilerConfig";
+import { CompilerConfigForwardInput, CompilerConfigForwardOutput, CompilerConfigItem } from "@config/CompilerConfig";
 import { IdGenerator } from "./IdGenerator";
 import {
   SerialDiagramNodes,
@@ -182,23 +182,39 @@ export class DiagramTorchCompiler {
           }
           return obj;
         }, {});
+        function getForwardInValue(compiler: DiagramTorchCompiler, inp: CompilerConfigForwardInput): string {
+          let value;
+          if (inp.node_input) value = linkedValueNameMap[inp.node_input];
+          if (inp.property) {
+            value = properties[inp.property].value
+              ? compiler._convertToPythonValue(properties[inp.property].value)
+              : compiler._convertToPythonValue(properties[inp.property].default);
+          }
+          if (inp.const) value = compiler._convertToPythonValue(inp.default);
+          return inp.keyword ? `${inp.name}=${value}` : `${value}`;
+        }
         parameters = compilerNode.forward.forward_in
           .map((inp) => {
             let value;
-            if (inp.node_input) value = linkedValueNameMap[inp.node_input];
-            if (inp.property) {
-              value = properties[inp.property].value
-                ? this._convertToPythonValue(properties[inp.property].value)
-                : this._convertToPythonValue(properties[inp.property].default);
+            if (Array.isArray(inp)) {
+              value = `(${inp.map((subInp) => getForwardInValue(this, subInp)).join(", ")})`;
+            } else {
+              value = getForwardInValue(this, inp);
             }
-            if (inp.const) value = this._convertToPythonValue(inp.default);
-            return inp.keyword ? `${inp.name}=${value}` : `${value}`;
+            return value;
           })
           .join(", ");
+        function getForwardOutValue(out: CompilerConfigForwardOutput) {
+          return topoValueNames.has(linkedValueNameMap[out.node_output]) ? linkedValueNameMap[out.node_output] : "_";
+        }
         const outputs = compilerNode.forward.forward_out
-          .map((out) =>
-            topoValueNames.has(linkedValueNameMap[out.node_output]) ? linkedValueNameMap[out.node_output] : "_"
-          )
+          .map((out) => {
+            if (Array.isArray(out)) {
+              return `(${out.map((subOut) => getForwardOutValue(subOut)).join(", ")})`;
+            } else {
+              return getForwardOutValue(out);
+            }
+          })
           .join(", ");
         if (node.name == "Const") {
           forward.push(`${outputs} = ${parameters}`);
