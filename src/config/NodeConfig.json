@@ -80,6 +80,36 @@
       }
     },
     {
+      "name": "cat",
+      "type": "diagram",
+      "menus": ["operations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#dba2a2",
+          "--theme-node-title-color": "#ba7d7d"
+        },
+        "inputs": [
+          { "name": "in1", "label": "" },
+          { "name": "in2", "label": "" }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ],
+        "properties": [
+          {
+            "name": "dim",
+            "label": "dim",
+            "type": "string",
+            "inputStyle": { "width": "24px" },
+            "default": 0
+          }
+        ]
+      }
+    },
+    {
       "name": "matmul",
       "type": "icon",
       "menus": ["operations"],
@@ -1221,11 +1251,13 @@
         },
         "inputs": [
           { "name": "in", "label": "inp" },
-          { "name": "(h_0, c_0)", "label": "(h_0, c_0)" }
+          { "name": "h_0", "label": "h_0" },
+          { "name": "c_0", "label": "c_0" }
         ],
         "outputs": [
           { "name": "out", "label": "out" },
-          { "name": "(h_n, c_n)", "label": "(h_n, c_n)" }
+          { "name": "h_n", "label": "h_n" },
+          { "name": "c_n", "label": "c_n" }
         ],
         "properties": [
           {

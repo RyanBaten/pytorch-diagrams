@@ -27,8 +27,8 @@ export interface CompilerConfigInitParameters {
 
 export interface CompilerConfigForward {
   name: string;
-  forward_in: CompilerConfigForwardInput[];
-  forward_out: CompilerConfigForwardOutput[];
+  forward_in: (CompilerConfigForwardInput | CompilerConfigForwardInput[])[];
+  forward_out: (CompilerConfigForwardOutput | CompilerConfigForwardOutput[])[];
 }
 
 export interface CompilerConfigForwardInput {

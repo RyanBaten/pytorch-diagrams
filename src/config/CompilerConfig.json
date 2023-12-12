@@ -17,6 +17,20 @@
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
+  "cat": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.cat",
+      "forward_in": [
+        [
+          { "name": "input", "node_input": "in1", "keyword": false },
+          { "name": "input", "node_input": "in2", "keyword": false }
+        ],
+        { "name": "dim", "property": "dim", "keyword": true, "default": 0 }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
   "matmul": {
     "imports": ["torch"],
     "forward": {
@@ -895,11 +909,17 @@
       "name": "TBD",
       "forward_in": [
         { "name": "input", "node_input": "in", "keyword": false },
-        { "name": "(h_0, c_0)", "node_input": "(h_0, c_0)", "keyword": false }
+        [
+          { "name": "h_0", "node_input": "h_0", "keyword": false },
+          { "name": "c_0", "node_input": "c_0", "keyword": false }
+        ]
       ],
       "forward_out": [
         { "name": "output", "node_output": "out" },
-        { "name": "output", "node_output": "(h_n, c_n)" }
+        [
+          { "name": "h_n", "node_output": "h_n" },
+          { "name": "c_n", "node_output": "c_n" }
+        ]
       ]
     }
   },
