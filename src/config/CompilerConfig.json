@@ -53,6 +53,17 @@
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
+  "permute": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.permute",
+      "forward_in": [
+        { "name": "input", "node_input": "in", "keyword": false },
+        { "name": "dims", "property": "dims", "keyword": false }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
   "pow": {
     "imports": ["torch"],
     "forward": {
@@ -60,6 +71,17 @@
       "forward_in": [
         { "name": "input", "node_input": "in", "keyword": false },
         { "name": "exponent", "property": "exponent", "keyword": false }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "reshape": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.reshape",
+      "forward_in": [
+        { "name": "input", "node_input": "in", "keyword": false },
+        { "name": "shape", "property": "shape", "keyword": false }
       ],
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
@@ -1282,6 +1304,25 @@
     "forward": {
       "name": "TBD",
       "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "bernoulli": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.bernoulli",
+      "forward_in": [{ "name": "input", "node_input": "input", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "normal": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.normal",
+      "forward_in": [
+        { "name": "mean", "node_input": "mean", "keyword": false },
+        { "name": "std", "node_input": "std", "keyword": false }
+      ],
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   }

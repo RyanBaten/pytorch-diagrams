@@ -1,5 +1,5 @@
 {
-  "node_menus": ["common", "operations", "creation ops", "layers", "activations"],
+  "node_menus": ["common", "operations", "creation ops", "layers", "activations", "random sampling"],
   "node_definitions": [
     {
       "name": "Start",
@@ -152,6 +152,33 @@
       }
     },
     {
+      "name": "permute",
+      "type": "diagram",
+      "menus": ["operations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#dba2a2",
+          "--theme-node-title-color": "#ba7d7d"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ],
+        "properties": [
+          {
+            "name": "dims",
+            "label": "dims",
+            "type": "string",
+            "inputStyle": { "width": "60px" },
+            "default": "(0,2,1)"
+          }
+        ]
+      }
+    },
+    {
       "name": "pow",
       "type": "diagram",
       "menus": ["operations"],
@@ -172,7 +199,35 @@
             "name": "exponent",
             "label": "exp",
             "type": "string",
-            "inputStyle": { "width": "24px" }
+            "inputStyle": { "width": "24px" },
+            "default": 2
+          }
+        ]
+      }
+    },
+    {
+      "name": "reshape",
+      "type": "diagram",
+      "menus": ["operations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#dba2a2",
+          "--theme-node-title-color": "#ba7d7d"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ],
+        "properties": [
+          {
+            "name": "shape",
+            "label": "shape",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "(-1)"
           }
         ]
       }
@@ -1724,6 +1779,45 @@
         },
         "inputs": [{ "name": "in", "label": "" }],
         "outputs": [{ "name": "out", "label": "" }]
+      }
+    },
+    {
+      "name": "bernoulli",
+      "type": "diagram",
+      "menus": ["random sampling"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#b793db",
+          "--theme-node-title-color": "#8568a1"
+        },
+        "inputs": [{ "name": "input", "label": "probs" }],
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "normal",
+      "type": "diagram",
+      "menus": ["random sampling"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#b793db",
+          "--theme-node-title-color": "#8568a1"
+        },
+        "inputs": [
+          { "name": "mean", "label": "mean" },
+          { "name": "std", "label": "std" }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ]
       }
     }
   ]
