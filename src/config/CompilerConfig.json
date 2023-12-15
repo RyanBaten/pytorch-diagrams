@@ -1315,6 +1315,18 @@
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
+  "multinomial": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.multinomial",
+      "forward_in": [
+        { "name": "in", "node_input": "in", "keyword": false },
+        { "name": "num_samples", "property": "num_samples", "default": 512, "keyword": false },
+        { "name": "replacement", "property": "replacement", "default": false, "keyword": true }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
   "normal": {
     "imports": ["torch"],
     "forward": {
@@ -1322,6 +1334,28 @@
       "forward_in": [
         { "name": "mean", "node_input": "mean", "keyword": false },
         { "name": "std", "node_input": "std", "keyword": false }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "poisson": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.poisson",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "rand": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.rand",
+      "forward_in": [
+        { "name": "size", "property": "size", "default": "(1,512)", "keyword": false },
+        { "name": "dtype", "property": "dtype", "default": "torch.float32", "keyword": true },
+        { "name": "layout", "property": "layout", "default": "torch.strided", "keyword": true },
+        { "name": "requires_grad", "property": "requires_grad", "default": false, "keyword": true },
+        { "name": "pin_memory", "property": "pin_memory", "default": false, "keyword": true }
       ],
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
