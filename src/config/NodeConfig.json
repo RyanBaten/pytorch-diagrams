@@ -1800,6 +1800,40 @@
       }
     },
     {
+      "name": "multinomial",
+      "type": "diagram",
+      "menus": ["random sampling"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#b793db",
+          "--theme-node-title-color": "#8568a1"
+        },
+        "inputs": [{ "name": "in", "label": "probs" }],
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ],
+        "properties": [
+          {
+            "name": "num_samples",
+            "label": "num_samples",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": 512
+          },
+          {
+            "name": "replacement",
+            "label": "replacement",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          }
+        ]
+      }
+    },
+    {
       "name": "normal",
       "type": "diagram",
       "menus": ["random sampling"],
@@ -1816,6 +1850,78 @@
           {
             "name": "out",
             "label": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "poisson",
+      "type": "diagram",
+      "menus": ["random sampling"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#b793db",
+          "--theme-node-title-color": "#8568a1"
+        },
+        "inputs": [{ "name": "in", "label": "rates" }],
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "rand",
+      "type": "diagram",
+      "menus": ["random sampling"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#b793db",
+          "--theme-node-title-color": "#8568a1"
+        },
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ],
+        "properties": [
+          {
+            "name": "size",
+            "label": "size",
+            "type": "string",
+            "inputStyle": { "width": "96px" },
+            "default": "(1,512)"
+          },
+          {
+            "name": "dtype",
+            "label": "dtype",
+            "type": "string",
+            "inputStyle": { "width": "96px" },
+            "default": "torch.float32"
+          },
+          {
+            "name": "layout",
+            "label": "layout",
+            "type": "string",
+            "inputStyle": { "width": "96px" },
+            "default": "torch.strided"
+          },
+          {
+            "name": "requires_grad",
+            "label": "requires_grad",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          },
+          {
+            "name": "pin_memory",
+            "label": "pin_memory",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
           }
         ]
       }
