@@ -269,6 +269,33 @@
       }
     },
     {
+      "name": "squeeze",
+      "type": "diagram",
+      "menus": ["operations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#dba2a2",
+          "--theme-node-title-color": "#ba7d7d"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ],
+        "properties": [
+          {
+            "name": "dim",
+            "label": "dim",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "-1"
+          }
+        ]
+      }
+    },
+    {
       "name": "sub",
       "type": "icon",
       "menus": ["operations"],
@@ -285,6 +312,33 @@
           {
             "name": "out",
             "label": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "unsqueeze",
+      "type": "diagram",
+      "menus": ["operations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#dba2a2",
+          "--theme-node-title-color": "#ba7d7d"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [
+          {
+            "name": "out",
+            "label": ""
+          }
+        ],
+        "properties": [
+          {
+            "name": "dim",
+            "label": "dim",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "-1"
           }
         ]
       }
@@ -1683,6 +1737,35 @@
       }
     },
     {
+      "name": "ELU",
+      "type": "diagram",
+      "menus": ["activations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#ebd2a4",
+          "--theme-node-title-color": "#d6a54b"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "alpha",
+            "label": "alpha",
+            "type": "string",
+            "inputStyle": { "width": "48px" },
+            "default": "1.0"
+          },
+          {
+            "name": "inplace",
+            "label": "inplace",
+            "type": "checkbox",
+            "inputProps": { "defaultChecked": false },
+            "default": false
+          }
+        ]
+      }
+    },
+    {
       "name": "GELU",
       "type": "diagram",
       "menus": ["activations"],
@@ -1766,6 +1849,28 @@
         },
         "inputs": [{ "name": "in", "label": "" }],
         "outputs": [{ "name": "out", "label": "" }]
+      }
+    },
+    {
+      "name": "Softmax",
+      "type": "diagram",
+      "menus": ["activations"],
+      "definition": {
+        "style": {
+          "--theme-node-background-color": "#ebd2a4",
+          "--theme-node-title-color": "#d6a54b"
+        },
+        "inputs": [{ "name": "in", "label": "" }],
+        "outputs": [{ "name": "out", "label": "" }],
+        "properties": [
+          {
+            "name": "dim",
+            "label": "dim",
+            "type": "string",
+            "inputStyle": { "width": "32px" },
+            "default": -1
+          }
+        ]
       }
     },
     {

@@ -102,6 +102,17 @@
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
+  "squeeze": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.squeeze",
+      "forward_in": [
+        { "name": "input", "node_input": "in", "keyword": false },
+        { "name": "dim", "property": "dim", "keyword": true, "default": -1 }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
   "sub": {
     "imports": ["torch"],
     "forward": {
@@ -109,6 +120,17 @@
       "forward_in": [
         { "name": "input", "node_input": "in1", "keyword": false },
         { "name": "input2", "node_input": "in2", "keyword": false }
+      ],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "unsqueeze": {
+    "imports": ["torch"],
+    "forward": {
+      "name": "torch.unsqueeze",
+      "forward_in": [
+        { "name": "input", "node_input": "in", "keyword": false },
+        { "name": "dim", "property": "dim", "keyword": false, "default": -1 }
       ],
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
@@ -1217,6 +1239,32 @@
       "forward_out": [{ "name": "output", "node_output": "out" }]
     }
   },
+  "ELU": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["ELU"] },
+    "init": {
+      "module_name": "ELU",
+      "parameters": [
+        {
+          "name": "alpha",
+          "node_property": "alpha",
+          "keyword": true,
+          "default": "1.0"
+        },
+        {
+          "name": "inplace",
+          "node_property": "inplace",
+          "keyword": true,
+          "default": false
+        }
+      ]
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
   "GELU": {
     "imports": [],
     "from_imports": { "torch.nn": ["GELU"] },
@@ -1288,6 +1336,26 @@
     "from_imports": { "torch.nn": ["Sigmoid"] },
     "init": {
       "module_name": "Sigmoid"
+    },
+    "forward": {
+      "name": "TBD",
+      "forward_in": [{ "name": "input", "node_input": "in", "keyword": false }],
+      "forward_out": [{ "name": "output", "node_output": "out" }]
+    }
+  },
+  "Softmax": {
+    "imports": [],
+    "from_imports": { "torch.nn": ["Softmax"] },
+    "init": {
+      "module_name": "Softmax",
+      "parameters": [
+        {
+          "name": "dim",
+          "node_property": "dim",
+          "keyword": true,
+          "default": -1
+        }
+      ]
     },
     "forward": {
       "name": "TBD",
